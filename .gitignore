@@ -1,0 +1,16 @@
+# Node
+node_modules/
+dist/
+dist-artifact/
+
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Rahasia & data siswa (agents.md aturan 6)
+.env
+.env.*
+data-siswa/
+*.export.json
+fungsiku-P0*.json

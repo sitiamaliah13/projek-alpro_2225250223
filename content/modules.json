@@ -1,0 +1,18 @@
+[
+  { "id": "m0", "order": 0, "title": "Cek Bekal", "lesson": null, "route": "/cek-bekal", "mvp": true, "ikon": "cek",
+    "desc": "Cek dulu bekal himpunan dan bilangan bulatmu sebelum mulai.", "findings": ["IL03", "IL05"] },
+  { "id": "m1", "order": 1, "title": "Relasi atau Fungsi?", "lesson": "m1", "mvp": true, "ikon": "relasi",
+    "desc": "Bedakan relasi yang merupakan fungsi dan yang bukan.", "findings": ["IL01", "GL01", "DS01"] },
+  { "id": "m2", "order": 2, "title": "Domain, Kodomain, Range", "lesson": "m2", "mvp": true, "ikon": "himpunan",
+    "desc": "Kenali himpunan asal, himpunan kawan, dan daerah hasil.", "findings": ["IL02", "IL03"] },
+  { "id": "m3", "order": 3, "title": "Banyaknya Pemetaan", "lesson": null, "mvp": false, "ikon": "relasi",
+    "desc": "Hitung banyak pemetaan yang mungkin.", "findings": ["K03"] },
+  { "id": "m4", "order": 4, "title": "Jembatan Representasi", "lesson": "m4", "mvp": true, "ikon": "jembatan",
+    "desc": "Ubah diagram panah menjadi tabel, rumus, dan grafik.", "findings": ["IL04", "EL04"] },
+  { "id": "m5", "order": 5, "title": "Nilai Fungsi", "lesson": "m5", "mvp": true, "ikon": "nilai",
+    "desc": "Hitung f(x) dengan teliti, termasuk bilangan negatif.", "findings": ["IL05", "DS02"] },
+  { "id": "m6", "order": 6, "title": "Menyusun Rumus Fungsi", "lesson": "m6", "mvp": true, "ikon": "rumus",
+    "desc": "Temukan rumus fungsi dari tabel atau dua nilai.", "findings": ["F-2", "GL02"] },
+  { "id": "m7", "order": 7, "title": "Fungsi di Sekitarku", "lesson": "m7", "mvp": true, "ikon": "sekitar",
+    "desc": "Selesaikan soal cerita dengan empat langkah.", "findings": ["EL01", "EL05", "GL05"] }
+]

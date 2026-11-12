@@ -1,0 +1,44 @@
+{
+  "_catatan": "DRAF soal Cek Bekal (IL03, IL05). Isi soal perlu disetujui pemilik proyek/validator.",
+  "batas_penguatan": 70,
+  "items": [
+    {
+      "id": "d-01", "kategori": "himpunan", "tipe": "angka",
+      "tanya": "A = {1, 2, 3, 4}. Berapa banyak anggota himpunan A?",
+      "kunci": 4,
+      "penjelasan": "Anggota A adalah 1, 2, 3, dan 4. Jadi ada 4 anggota."
+    },
+    {
+      "id": "d-02", "kategori": "himpunan", "tipe": "pilihan",
+      "tanya": "B = {a, b, c}. Manakah yang merupakan anggota B?",
+      "pilihan": ["d", "b", "3"],
+      "kunci": 1,
+      "penjelasan": "Hanya a, b, dan c yang ada di dalam kurung kurawal. Jadi b anggota B."
+    },
+    {
+      "id": "d-03", "kategori": "himpunan", "tipe": "pilihan",
+      "tanya": "Pada pasangan berurutan (2, 5), manakah anggota pertamanya?",
+      "pilihan": ["2", "5", "7"],
+      "kunci": 0,
+      "penjelasan": "Pasangan berurutan ditulis (pertama, kedua). Anggota pertama adalah 2."
+    },
+    {
+      "id": "d-04", "kategori": "bilangan_bulat", "tipe": "angka",
+      "tanya": "Hitunglah 3 × (−2).",
+      "kunci": -6,
+      "penjelasan": "Positif × negatif hasilnya negatif. 3 × 2 = 6, jadi 3 × (−2) = −6."
+    },
+    {
+      "id": "d-05", "kategori": "bilangan_bulat", "tipe": "angka",
+      "tanya": "Hitunglah −4 + 7.",
+      "kunci": 3,
+      "penjelasan": "Mulai dari −4, lalu maju 7 langkah. Hasilnya 3."
+    },
+    {
+      "id": "d-06", "kategori": "bilangan_bulat", "tipe": "angka",
+      "tanya": "Hitunglah 2 × (−3) − 1.",
+      "kunci": -7,
+      "penjelasan": "Kalikan dulu: 2 × (−3) = −6. Lalu −6 − 1 = −7."
+    }
+  ]
+}

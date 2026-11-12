@@ -1,0 +1,61 @@
+{
+  "_catatan": "Teks soal dari docs/kisi-kisi-soal-literasi.md. Kunci dan rubrik SENGAJA tidak dimasukkan; jawaban dinilai peneliti.",
+  "pre": {
+    "judul": "Pretest",
+    "durasi_menit": 60,
+    "petunjuk": [
+      "Kerjakan kelima soal secara berurutan.",
+      "Tuliskan langkah penyelesaianmu, bukan hanya jawaban akhir.",
+      "Setiap langkah yang benar mendapat nilai."
+    ],
+    "soal": [
+      { "no": 1, "judul": "Sewa Sepeda",
+        "teks": ["Persewaan A memasang tarif Rp8.000 per jam. Persewaan B memasang biaya awal Rp10.000, lalu Rp5.000 per jam.", "Dina akan bersepeda selama 4 jam. Ia ingin membayar sesedikit mungkin."],
+        "tanya": "Di persewaan mana Dina sebaiknya menyewa? Jelaskan alasan matematis Anda." },
+      { "no": 2, "judul": "Ongkos Taksi",
+        "teks": ["Tarif sebuah taksi terdiri atas biaya buka pintu Rp7.000 dan biaya Rp4.000 per kilometer.", "Perjalanan Pak Budi biasanya memakan waktu 30 menit. Uang Pak Budi Rp55.000."],
+        "tanya": "Ubahlah situasi tersebut menjadi model matematika, lalu tentukan jarak terjauh yang dapat ditempuh Pak Budi dengan uangnya." },
+      { "no": 3, "judul": "Cetak Undangan",
+        "teks": ["Biaya cetak undangan mengikuti fungsi linear f(x) = ax + b, dengan x adalah banyak undangan.", "Biaya mencetak 20 undangan adalah Rp50.000. Biaya mencetak 50 undangan adalah Rp95.000."],
+        "tanya": "Berapa biaya mencetak 80 undangan? Tunjukkan langkah perhitungan Anda." },
+      { "no": 4, "judul": "Lilin yang Menyala",
+        "teks": ["Sebatang lilin mula-mula tingginya 20 cm. Tinggi lilin berkurang 2,5 cm setiap jam.", "Tinggi lilin setelah x jam dinyatakan dengan fungsi t(x) = 20 − 2,5x.", "Rudi menghitung t(10) = 20 − 25 = −5. Ia menyimpulkan bahwa setelah 10 jam tinggi lilin adalah −5 cm."],
+        "tanya": "Apakah Anda setuju dengan kesimpulan Rudi? Tentukan kapan lilin habis dan jelaskan alasan Anda." },
+      { "no": 5, "judul": "Pilihan Ekstrakurikuler",
+        "teks": ["Relasi \"memilih ekstrakurikuler\" dari A = {Ani, Beni, Cici, Dedi, Eka} ke B = {Futsal, Pramuka, Paduan Suara} adalah sebagai berikut."],
+        "tabel": { "kolom": ["Siswa", "Ekstrakurikuler yang dipilih"],
+                   "baris": [["Ani", "Futsal"], ["Beni", "Futsal"], ["Cici", "Pramuka dan Paduan Suara"], ["Dedi", "Pramuka"], ["Eka", "belum memilih"]] },
+        "teks_akhir": ["Rina berkata, \"Relasi ini bukan fungsi karena Futsal dipilih oleh dua siswa.\""],
+        "tanya": "Apakah relasi tersebut merupakan fungsi? Apakah alasan Rina tepat? Jelaskan." }
+    ]
+  },
+  "post": {
+    "judul": "Posttest",
+    "durasi_menit": 60,
+    "petunjuk": [
+      "Kerjakan kelima soal secara berurutan.",
+      "Tuliskan langkah penyelesaianmu, bukan hanya jawaban akhir.",
+      "Setiap langkah yang benar mendapat nilai."
+    ],
+    "soal": [
+      { "no": 1, "judul": "Jasa Laundry",
+        "teks": ["Laundry A memasang tarif Rp7.000 per kg. Laundry B memasang biaya antar-jemput Rp9.000, lalu Rp4.000 per kg.", "Siti akan mencuci pakaian sebanyak 5 kg. Ia ingin membayar sesedikit mungkin."],
+        "tanya": "Di laundry mana Siti sebaiknya mencuci? Jelaskan alasan matematis Anda." },
+      { "no": 2, "judul": "Tiket Wahana",
+        "teks": ["Di sebuah taman bermain, tiket masuk Rp15.000 dan setiap naik wahana membayar Rp6.000.", "Perjalanan Lina ke taman bermain memakan waktu 45 menit. Uang Lina Rp63.000."],
+        "tanya": "Ubahlah situasi tersebut menjadi model matematika, lalu tentukan paling banyak berapa wahana yang dapat dinaiki Lina." },
+      { "no": 3, "judul": "Gantungan Kunci",
+        "teks": ["Biaya pembuatan gantungan kunci mengikuti fungsi linear f(x) = ax + b, dengan x adalah banyak gantungan kunci.", "Biaya membuat 25 gantungan kunci adalah Rp75.000. Biaya membuat 55 gantungan kunci adalah Rp135.000."],
+        "tanya": "Berapa biaya membuat 85 gantungan kunci? Tunjukkan langkah perhitungan Anda." },
+      { "no": 4, "judul": "Drum Air",
+        "teks": ["Sebuah drum mula-mula berisi 36 liter air. Air berkurang 1,5 liter setiap menit.", "Volume air setelah x menit dinyatakan dengan fungsi v(x) = 36 − 1,5x.", "Joni menghitung v(30) = 36 − 45 = −9. Ia menyimpulkan bahwa setelah 30 menit volume air adalah −9 liter."],
+        "tanya": "Apakah Anda setuju dengan kesimpulan Joni? Tentukan kapan air habis dan jelaskan alasan Anda." },
+      { "no": 5, "judul": "Jadwal Piket",
+        "teks": ["Relasi \"mendapat jadwal piket\" dari P = {Fajar, Gita, Hana, Iwan, Joko} ke Q = {Senin, Selasa, Rabu, Kamis} adalah sebagai berikut."],
+        "tabel": { "kolom": ["Siswa", "Hari piket"],
+                   "baris": [["Fajar", "Senin"], ["Gita", "Selasa dan Kamis"], ["Hana", "Rabu"], ["Iwan", "Senin"], ["Joko", "belum mendapat jadwal"]] },
+        "teks_akhir": ["Ketua kelas berkata, \"Relasi ini bukan fungsi karena hari Senin diisi oleh dua siswa.\""],
+        "tanya": "Apakah relasi tersebut merupakan fungsi? Apakah alasan ketua kelas tepat? Jelaskan." }
+    ]
+  }
+}

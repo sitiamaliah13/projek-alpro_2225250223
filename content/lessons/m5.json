@@ -1,0 +1,83 @@
+{
+  "id": "m5",
+  "title": "Nilai Fungsi",
+  "temuan": ["IL05", "DS02", "EL03"],
+  "lencana": "Detektif Tanda",
+  "cards": [
+    {
+      "type": "teks", "tahap": "Analogi", "judul": "Mesin fungsi",
+      "isi": ["Mesin fungsi menerima x, lalu mengeluarkan f(x).", "Menghitung nilai fungsi berarti **mengganti x dengan bilangan**."]
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Mengganti x",
+      "isi": ["f(x) = 2x − 3. Untuk x = −2, kita menulis f(−2).", "Setiap x diganti dengan **(−2)**, lengkap dengan kurungnya."]
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Penanda Tanda",
+      "isi": ["Di aplikasi ini, bilangan negatif selalu ditulis **dalam kurung** dan berwarna **ungu**.", "Positif × negatif = **negatif**. Negatif × negatif = **positif**."]
+    },
+    {
+      "type": "mesin", "tahap": "Simulasi", "judul": "Mesin Fungsi",
+      "a": 2, "b": -3, "pilihanX": [-2, -1, 0, 3],
+      "isi": ["Aturan mesin ini: × 2, lalu − 3.", "Coba masukkan bilangan negatif. Perhatikan tandanya."]
+    },
+    {
+      "type": "contoh", "tahap": "Contoh lengkap", "judul": "Menghitung f(−2)",
+      "isi": ["f(x) = 2x − 3. Hitung f(−2)."],
+      "langkah": [
+        "**Langkah 1.** Ganti x dengan (−2): f(−2) = 2 × (−2) − 3.",
+        "**Langkah 2.** 2 × (−2) = −4, karena positif × negatif hasilnya negatif.",
+        "**Langkah 3.** −4 − 3 = −7, karena dari −4 mundur 3 langkah.",
+        "**Jadi** f(−2) = −7."
+      ]
+    },
+    {
+      "type": "substitusi", "id": "m5-s1", "tahap": "Contoh rumpang", "judul": "Giliranmu",
+      "a": 2, "b": -3, "x": -1,
+      "isi": ["f(x) = 2x − 3. Hitung **f(−1)** langkah demi langkah."],
+      "petunjuk": ["Positif × negatif hasilnya negatif.", "2 × (−1) = −2.", "−2 − 3 berarti dari −2 mundur 3 langkah."]
+    },
+    {
+      "type": "substitusi", "id": "m5-l1", "tahap": "Latihan", "judul": "Latihan 1", "latihan": true,
+      "a": -3, "b": 4, "x": -5,
+      "isi": ["f(x) = −3x + 4. Hitung **f(−5)**."],
+      "petunjuk": ["Negatif × negatif hasilnya positif.", "(−3) × (−5) = 15.", "15 + 4 = ?"]
+    },
+    {
+      "type": "substitusi", "id": "m5-l2", "tahap": "Latihan", "judul": "Latihan 2", "latihan": true,
+      "a": 4, "b": 6, "x": -3,
+      "isi": ["f(x) = 4x + 6. Hitung **f(−3)**."],
+      "petunjuk": ["Positif × negatif hasilnya negatif.", "4 × (−3) = −12.", "−12 + 6 berarti dari −12 maju 6 langkah."]
+    },
+    {
+      "type": "isian", "id": "m5-l3", "tahap": "Latihan", "judul": "Latihan 3", "latihan": true,
+      "isi": ["f(x) = 2x − 3. Nilai fungsinya **f(x) = 7**."],
+      "tanya": { "tipe": "angka", "teks": "Berapa nilai x?", "kunci": 5,
+        "benar": "Tepat. 2x − 3 = 7, jadi 2x = 10 dan x = 5. Cek: 2 × 5 − 3 = 7.",
+        "salah": "Tulis persamaannya: 2x − 3 = 7. Lalu cari x.",
+        "salahKhusus": { "11": "Kamu menghitung f(7). Yang ditanya: x berapa agar f(x) = 7.", "2": "2x − 3 = 7 berarti 2x = 10, bukan 4." },
+        "petunjuk": ["2x − 3 = 7.", "Tambahkan 3 ke kedua ruas: 2x = 10.", "x = 10 : 2."] }
+    },
+    {
+      "type": "jelaskan", "id": "m5-jelaskan", "tahap": "Jelaskan", "judul": "Jelaskan ke temanmu",
+      "isi": ["Temanmu menulis 2 × (−3) = 6. Pilih penjelasan terbaik."],
+      "pilihan": [
+        "Salah. Positif × negatif hasilnya negatif, jadi 2 × (−3) = −6.",
+        "Benar, karena 2 × 3 = 6.",
+        "Salah, hasilnya −5.",
+        "Benar, tanda minus boleh diabaikan."
+      ],
+      "kunci": 0,
+      "model": "2 × (−3) = −6. Positif × negatif selalu negatif. Tanda minus tidak boleh diabaikan."
+    },
+    { "type": "refleksi", "tahap": "Refleksi", "judul": "Seberapa berat?" },
+    {
+      "type": "ringkasan", "tahap": "Ringkasan", "judul": "Ingat ini",
+      "poin": [
+        "Ganti x dengan bilangannya. Bilangan negatif selalu **dalam kurung**.",
+        "Kalikan dulu, baru tambah atau kurang.",
+        "Positif × negatif = negatif. Negatif × negatif = positif."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "id": "m1",
+  "title": "Relasi atau Fungsi?",
+  "sumber": "docs/contoh-materi-M1.md",
+  "temuan": ["IL01", "GL01", "GL03", "GL04", "DS01", "DS03", "EL03"],
+  "lencana": "Penjaga Syarat Fungsi",
+  "cards": [
+    {
+      "type": "teks", "tahap": "Analogi", "judul": "Nomor absen",
+      "isi": ["Di kelasmu, setiap siswa punya **tepat satu** nomor absen.", "Tidak ada siswa yang punya dua nomor. Tidak ada siswa tanpa nomor."],
+      "diagram": { "A": ["Ani", "Budi", "Cici"], "B": [1, 2, 3], "pairs": [["Ani", 1], ["Budi", 2], ["Cici", 3]] }
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Relasi",
+      "isi": ["**Relasi** adalah aturan yang memasangkan anggota himpunan A dengan anggota himpunan B.", "Pasangan digambar dengan **panah**."],
+      "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [1, "b"], [3, "c"]] }
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Fungsi",
+      "isi": ["**Fungsi** adalah relasi khusus.", "Syaratnya: **setiap** anggota A punya **tepat satu** pasangan di B."],
+      "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "b"], [3, "c"]] }
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Gagal 1: dua pasangan",
+      "isi": ["Lihat angka 2. Ia punya **dua** pasangan.", "Relasi seperti ini **bukan fungsi**."],
+      "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "b"], [2, "c"], [3, "c"]], "tandai": true }
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Gagal 2: tanpa pasangan",
+      "isi": ["Lihat angka 3. Ia **tidak punya** pasangan.", "Relasi seperti ini juga **bukan fungsi**."],
+      "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "b"]], "tandai": true }
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Yang boleh",
+      "isi": ["Dua anggota A **boleh** menuju anggota B yang sama.", "Anggota B **boleh** tidak punya pasangan. Ini tetap fungsi."],
+      "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "a"], [3, "b"]], "tandai": true }
+    },
+    {
+      "type": "simulasi", "tahap": "Simulasi", "judul": "Tarik garis",
+      "isi": ["Ketuk anggota A, lalu ketuk anggota B untuk membuat panah.", "Ketuk panah lagi untuk menghapusnya. Buatlah sebuah fungsi."],
+      "A": [1, 2, 3], "B": ["a", "b", "c", "d"]
+    },
+    {
+      "type": "soal", "id": "m1-beda", "tahap": "Simulasi", "judul": "Cari panah pengganggu",
+      "isi": ["Diagram ini **bukan fungsi**. Tanpa satu panah, ia menjadi fungsi.", "Panah mana yang membuatnya bukan fungsi?"],
+      "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c", "d"], "pairs": [[1, "a"], [2, "b"], [2, "c"], [3, "d"]] },
+      "pilihan": ["1 → a", "2 → b atau 2 → c", "3 → d"],
+      "kunci": 1,
+      "latihan": false,
+      "petunjuk": ["Periksa anggota A satu per satu.", "Anggota A mana yang punya dua panah?", "Angka 2 punya dua panah. Salah satunya harus dihapus."],
+      "umpan": { "benar": "Tepat. Panah 2 → b dan 2 → c membuat 2 punya dua pasangan.", "salah": "Panah itu tidak bermasalah. Anggota A-nya hanya punya satu pasangan." }
+    },
+    {
+      "type": "contoh", "tahap": "Contoh lengkap", "judul": "Fungsi atau bukan?",
+      "isi": ["A = {1, 2, 3, 4}, B = {p, q, r}. Fungsi atau bukan?"],
+      "diagram": { "A": [1, 2, 3, 4], "B": ["p", "q", "r"], "pairs": [[1, "p"], [2, "q"], [3, "q"], [4, "r"]] },
+      "langkah": [
+        "**Langkah 1.** Periksa setiap anggota A satu per satu.",
+        "**Langkah 2.** 1 → p, 2 → q, 3 → q, 4 → r. Masing-masing hanya satu panah ✓",
+        "**Langkah 3.** Semua anggota A punya tepat satu pasangan.",
+        "**Kesimpulan.** Relasi ini **fungsi**. 2 dan 3 sama-sama ke q, dan itu boleh."
+      ]
+    },
+    {
+      "type": "rumpang", "tahap": "Contoh rumpang", "judul": "Lengkapi langkahnya",
+      "isi": ["A = {1, 2, 3}, B = {a, b, c}. Lengkapi langkah di bawah."],
+      "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [1, "b"], [3, "c"]] },
+      "isian": [
+        { "tanya": "1 menuju a dan b. Berapa pasangan yang dimiliki 1?", "pilihan": ["1", "2", "3"], "kunci": 1, "salah": "Hitung panah yang keluar dari 1. Ada panah ke a dan ke b." },
+        { "tanya": "2 menuju ke mana?", "pilihan": ["a", "b", "c", "tidak ada"], "kunci": 3, "salah": "Lihat lagi angka 2. Apakah ada panah yang keluar darinya?" },
+        { "tanya": "Kesimpulannya?", "pilihan": ["Fungsi", "Bukan fungsi, karena 1 punya dua pasangan dan 2 tidak punya pasangan", "Bukan fungsi, karena c hanya punya satu pasangan"], "kunci": 1, "salah": "Syarat fungsi dilihat dari anggota A, bukan anggota B." }
+      ]
+    },
+    {
+      "type": "soal", "id": "m1-l1", "tahap": "Latihan", "judul": "Latihan 1",
+      "isi": ["A = {1, 2, 3}, B = {a, b, c}. Fungsi atau bukan?"],
+      "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "a"], [3, "b"]] },
+      "pilihan": ["Fungsi", "Bukan fungsi"],
+      "kunci": 0,
+      "petunjuk": ["Periksa anggota A satu per satu.", "Berapa pasangan yang dimiliki 1? 2? 3?", "Dua anggota A boleh menuju anggota B yang sama."],
+      "umpan": { "benar": "Tepat! Setiap anggota A punya tepat satu pasangan. 1 dan 2 sama-sama ke a, dan itu boleh.", "salah": "Hati-hati! 1 dan 2 sama-sama ke a. Itu **boleh**. Yang dilarang adalah satu anggota A punya dua pasangan." }
+    },
+    {
+      "type": "soal", "id": "m1-l2", "tahap": "Latihan", "judul": "Latihan 2",
+      "isi": ["A = {1, 2, 3, 4}, B = {p, q, r}. Fungsi atau bukan?"],
+      "diagram": { "A": [1, 2, 3, 4], "B": ["p", "q", "r"], "pairs": [[1, "p"], [2, "q"], [4, "r"]] },
+      "pilihan": ["Fungsi", "Bukan fungsi"],
+      "kunci": 1,
+      "petunjuk": ["Apakah semua anggota A sudah punya panah?", "Lihat angka 3.", "Syarat fungsi: **setiap** anggota A harus punya pasangan."],
+      "umpan": { "benar": "Tepat! 3 tidak punya pasangan, jadi relasi ini bukan fungsi.", "salah": "Coba cari angka 3. Belum ada panah dari 3, jadi syarat \"setiap anggota A\" tidak terpenuhi." }
+    },
+    {
+      "type": "buat", "id": "m1-l3", "tahap": "Latihan", "judul": "Buat Diagramku",
+      "isi": ["Buat relasi yang **bukan fungsi** karena **satu** anggota A punya dua pasangan.", "Anggota A yang lain harus punya tepat satu pasangan."],
+      "A": [1, 2, 3], "B": ["a", "b"],
+      "target": "satu_dua_pasangan",
+      "petunjuk": ["Pilih satu anggota A, misalnya 1.", "Beri anggota itu dua panah: ke a dan ke b.", "Pastikan 2 dan 3 masing-masing punya satu panah."],
+      "umpan": { "benar": "Hebat! Satu anggota A punya dua pasangan, jadi relasimu bukan fungsi." }
+    },
+    {
+      "type": "soal", "id": "m1-l4", "tahap": "Latihan", "judul": "Latihan 4",
+      "isi": ["Manakah relasi yang **pasti** merupakan fungsi?"],
+      "pilihan": ["Setiap siswa → golongan darahnya", "Setiap siswa → hobinya"],
+      "kunci": 0,
+      "petunjuk": ["Bayangkan satu siswa. Berapa golongan darah yang ia punya?", "Apakah seseorang bisa punya dua hobi?", "Fungsi: setiap anggota punya **tepat satu** pasangan."],
+      "umpan": { "benar": "Tepat! Setiap orang punya tepat satu golongan darah. Hobi bisa lebih dari satu.", "salah": "Seorang siswa bisa punya dua hobi atau lebih. Jadi relasi hobi belum tentu fungsi." }
+    },
+    {
+      "type": "jelaskan", "id": "m1-jelaskan", "tahap": "Jelaskan", "judul": "Jelaskan ke temanmu",
+      "isi": ["Temanmu bingung dengan Latihan 2. Pilih penjelasan terbaik."],
+      "pilihan": [
+        "Bukan fungsi, karena ada anggota B yang tidak punya pasangan.",
+        "Bukan fungsi, karena 3 di A tidak punya pasangan.",
+        "Fungsi, karena semua panah menuju anggota B yang berbeda.",
+        "Bukan fungsi, karena banyak anggota A dan B tidak sama."
+      ],
+      "kunci": 1,
+      "model": "Bukan fungsi, karena 3 tidak punya pasangan. Fungsi: setiap anggota A tepat satu pasangan."
+    },
+    { "type": "refleksi", "tahap": "Refleksi", "judul": "Seberapa berat?" },
+    {
+      "type": "ringkasan", "tahap": "Ringkasan", "judul": "Ingat ini",
+      "poin": [
+        "✓ Fungsi: **setiap** anggota A punya **tepat satu** pasangan.",
+        "✗ Bukan fungsi: ada anggota A dengan dua pasangan, atau tanpa pasangan.",
+        "✓ Boleh: dua anggota A menuju anggota B yang sama."
+      ]
+    }
+  ]
+}

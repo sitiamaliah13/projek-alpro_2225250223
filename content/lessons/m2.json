@@ -1,0 +1,84 @@
+{
+  "id": "m2",
+  "title": "Domain, Kodomain, Range",
+  "temuan": ["IL02", "IL03", "EL02"],
+  "lencana": "Penjaga Himpunan",
+  "cards": [
+    {
+      "type": "teks", "tahap": "Analogi", "judul": "Kelas dan ekskul",
+      "isi": ["Setiap siswa memilih satu ekstrakurikuler.", "Ada ekskul yang dipilih, ada juga yang belum dipilih siapa pun."],
+      "diagram": { "A": ["Ani", "Budi", "Cici"], "B": ["Futsal", "Tari", "Musik"], "pairs": [["Ani", "Futsal"], ["Budi", "Tari"], ["Cici", "Futsal"]] }
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Domain",
+      "isi": ["**Domain** adalah himpunan asal, yaitu himpunan A.", "Di sini domain selalu berwarna **biru**: {1, 2, 3}."],
+      "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c", "d"], "pairs": [[1, "a"], [2, "b"], [3, "b"]] }
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Kodomain",
+      "isi": ["**Kodomain** adalah himpunan kawan, yaitu **seluruh** himpunan B.", "Kodomain berwarna **hijau toska**: {a, b, c, d}."],
+      "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c", "d"], "pairs": [[1, "a"], [2, "b"], [3, "b"]] }
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Range",
+      "isi": ["**Range** hanya anggota B yang **terkena panah**.", "Di sini range = {a, b}, diberi latar hijau muda. c dan d tidak termasuk."],
+      "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c", "d"], "pairs": [[1, "a"], [2, "b"], [3, "b"]], "sorotB": ["a", "b"] }
+    },
+    {
+      "type": "contoh", "tahap": "Contoh lengkap", "judul": "Menentukan ketiganya",
+      "isi": ["A = {1, 2, 3, 4}, B = {2, 4, 6, 8, 10}. Relasi: \"setengah dari\"."],
+      "diagram": { "A": [1, 2, 3, 4], "B": [2, 4, 6, 8, 10], "pairs": [[1, 2], [2, 4], [3, 6], [4, 8]] },
+      "langkah": [
+        "**Domain** = himpunan A = {1, 2, 3, 4}.",
+        "**Kodomain** = seluruh himpunan B = {2, 4, 6, 8, 10}.",
+        "**Range** = anggota B yang terkena panah = {2, 4, 6, 8}.",
+        "10 tidak terkena panah, jadi **bukan** anggota range. Range selalu bagian dari kodomain."
+      ]
+    },
+    {
+      "type": "sorot", "id": "m2-s1", "tahap": "Latihan", "judul": "Sorot range", "latihan": true,
+      "isi": ["Ketuk semua anggota B yang termasuk **range**."],
+      "diagram": { "A": [1, 2, 3, 4], "B": ["p", "q", "r", "s"], "pairs": [[1, "p"], [2, "r"], [3, "r"], [4, "p"]] },
+      "petunjuk": ["Range = anggota B yang terkena panah.", "Ikuti setiap panah sampai ujungnya.", "Ujung panah hanya p dan r."]
+    },
+    {
+      "type": "soal", "id": "m2-l2", "tahap": "Latihan", "judul": "Latihan 2",
+      "isi": ["Perhatikan diagram berikut."],
+      "diagram": { "A": [2, 3, 5], "B": [4, 6, 9, 10, 25], "pairs": [[2, 4], [3, 9], [5, 25]] },
+      "pilihan": ["Domain = {4, 9, 25}", "Domain = {2, 3, 5}", "Domain = {4, 6, 9, 10, 25}"],
+      "kunci": 1,
+      "petunjuk": ["Domain adalah himpunan asal panah.", "Panah berangkat dari himpunan sebelah kiri.", "Himpunan kiri berisi 2, 3, dan 5."],
+      "umpan": { "benar": "Tepat! Domain adalah himpunan asal, yaitu {2, 3, 5}.", "salah": "Itu anggota himpunan B. Domain adalah himpunan **asal** panah (kiri)." }
+    },
+    {
+      "type": "soal", "id": "m2-l3", "tahap": "Latihan", "judul": "Latihan 3",
+      "isi": ["Masih diagram yang sama. Mengapa 6 dan 10 bukan anggota range?"],
+      "diagram": { "A": [2, 3, 5], "B": [4, 6, 9, 10, 25], "pairs": [[2, 4], [3, 9], [5, 25]] },
+      "pilihan": ["Karena 6 dan 10 bilangan genap", "Karena 6 dan 10 tidak terkena panah", "Karena 6 dan 10 bukan anggota kodomain"],
+      "kunci": 1,
+      "petunjuk": ["Range = anggota B yang terkena panah.", "Apakah ada panah menuju 6 atau 10?", "6 dan 10 tetap anggota kodomain."],
+      "umpan": { "benar": "Tepat! 6 dan 10 anggota kodomain, tetapi tidak terkena panah.", "salah": "6 dan 10 tetap anggota kodomain. Cek: apakah ada panah yang menuju keduanya?" }
+    },
+    {
+      "type": "jelaskan", "id": "m2-jelaskan", "tahap": "Jelaskan", "judul": "Jelaskan ke temanmu",
+      "isi": ["Temanmu bingung membedakan kodomain dan range. Pilih penjelasan terbaik."],
+      "pilihan": [
+        "Kodomain dan range selalu sama.",
+        "Kodomain adalah seluruh himpunan B. Range hanya anggota B yang terkena panah.",
+        "Range adalah himpunan A, kodomain adalah himpunan B.",
+        "Range lebih banyak daripada kodomain."
+      ],
+      "kunci": 1,
+      "model": "Kodomain = seluruh himpunan B. Range = anggota B yang terkena panah. Range selalu bagian dari kodomain."
+    },
+    { "type": "refleksi", "tahap": "Refleksi", "judul": "Seberapa berat?" },
+    {
+      "type": "ringkasan", "tahap": "Ringkasan", "judul": "Ingat ini",
+      "poin": [
+        "**Domain** = himpunan asal (A).",
+        "**Kodomain** = seluruh himpunan kawan (B).",
+        "**Range** = anggota B yang terkena panah. Range bagian dari kodomain."
+      ]
+    }
+  ]
+}

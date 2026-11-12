@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 100%; /* menghormati pengaturan ukuran huruf di HP */
+}
+
+body {
+  @apply bg-bg text-ink text-lg antialiased;
+  font-family: Nunito, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Lapisan kartu memberi kesan melayang tanpa gerak otomatis (EL03). */
+.surface-float {
+  border: 1px solid #fbcfe8;
+  background: #fff;
+  box-shadow: 0 12px 30px rgb(157 23 77 / 8%), 0 3px 8px rgb(157 23 77 / 5%);
+}
+
+.surface-pink {
+  border: 1px solid #fbcfe8;
+  background: #fff7fb;
+}
+
+/* EL03: tidak ada animasi; hormati juga pengaturan sistem. */
+*,
+*::before,
+*::after {
+  transition: none !important;
+  animation: none !important;
+  scroll-behavior: auto !important;
+}
+
+:focus-visible {
+  outline: 3px solid #be185d;
+  outline-offset: 2px;
+}

@@ -1,0 +1,114 @@
+{
+  "id": "m4",
+  "title": "Jembatan Representasi",
+  "temuan": ["IL04", "EL02", "EL04", "A6"],
+  "lencana": "Penjembatan Representasi",
+  "cards": [
+    {
+      "type": "teks", "tahap": "Analogi", "judul": "Satu cerita, banyak cara",
+      "isi": ["Satu cerita bisa disampaikan lewat gambar atau lewat kata-kata.", "Fungsi juga begitu. Satu data bisa ditulis dengan **banyak cara**."]
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Satu fungsi, enam tahap",
+      "isi": ["Kita pakai **satu fungsi yang sama** di enam layar berikut.", "Perhatikan: x selalu **biru** dan f(x) selalu **hijau toska**."]
+    },
+    {
+      "type": "jembatan", "tahap": "Jembatan", "judul": "Tahap 1: Diagram panah",
+      "fungsi": { "a": 2, "b": 1 }, "domain": [1, 2, 3, 4], "ke": 1,
+      "isi": ["Setiap x dipasangkan dengan satu f(x)."],
+      "tanya": { "tipe": "pilihan", "teks": "Ke mana 1 dipasangkan?", "pilihan": ["2", "3", "5"], "kunci": 1,
+        "benar": "Tepat. Panahnya 1 → 3.", "salah": "Ikuti panah yang keluar dari 1." }
+    },
+    {
+      "type": "jembatan", "tahap": "Jembatan", "judul": "Tahap 2: Pasangan berurutan",
+      "fungsi": { "a": 2, "b": 1 }, "domain": [1, 2, 3, 4], "ke": 2, "kosong": [4],
+      "isi": ["Panah 1 → 3 ditulis sebagai pasangan **(1, 3)**.", "Angka pertama x, angka kedua f(x)."],
+      "tanya": { "tipe": "angka", "teks": "Pasangan dari 4 adalah (4, ?).", "kunci": 9,
+        "benar": "Tepat. Panah 4 → 9 ditulis (4, 9).",
+        "salah": "Lihat lagi diagram panah: 4 dipasangkan ke mana?",
+        "salahKhusus": { "4": "Angka kedua adalah f(x), yaitu ujung panah dari 4." },
+        "petunjuk": ["Kembali ke layar sebelumnya bila perlu.", "Ikuti panah dari 4.", "Pola pasangan: (1, 3), (2, 5), (3, 7), ..."] }
+    },
+    {
+      "type": "jembatan", "tahap": "Jembatan", "judul": "Tahap 3: Tabel",
+      "fungsi": { "a": 2, "b": 1 }, "domain": [1, 2, 3, 4], "ke": 3, "sorot": [3],
+      "isi": ["Pasangan yang sama disusun dalam **tabel**.", "Baris atas x, baris bawah f(x)."],
+      "tanya": { "tipe": "angka", "teks": "Dari tabel, f(3) = ?", "kunci": 7,
+        "benar": "Tepat. Kolom x = 3 berisi f(x) = 7.",
+        "salah": "Cari kolom yang x-nya 3, lalu lihat baris f(x) di bawahnya.",
+        "petunjuk": ["Kolom x = 3 diberi garis tebal.", "Baca angka di bawah 3."] }
+    },
+    {
+      "type": "jembatan", "tahap": "Jembatan", "judul": "Tahap 4: Pola",
+      "fungsi": { "a": 2, "b": 1 }, "domain": [1, 2, 3, 4], "ke": 4,
+      "isi": ["Sekarang lihat **polanya** di bawah tabel."],
+      "tanya": { "tipe": "angka", "teks": "Setiap x naik 1, f(x) naik berapa?", "kunci": 2,
+        "benar": "Tepat. f(x) selalu naik 2. Jadi **a = 2**.",
+        "salah": "Lihat kotak di bawah tabel: x + 1, lalu f berapa?",
+        "salahKhusus": { "1": "Itu kenaikan x. Yang ditanya kenaikan f(x)." },
+        "petunjuk": ["Bandingkan 3 dan 5, lalu 5 dan 7.", "5 − 3 = ?"] }
+    },
+    {
+      "type": "jembatan", "tahap": "Jembatan", "judul": "Tahap 5: Rumus",
+      "fungsi": { "a": 2, "b": 1 }, "domain": [1, 2, 3, 4], "ke": 5,
+      "isi": ["Karena a = 2, rumusnya f(x) = 2x + b.", "Mundur satu langkah ke x = 0: f(x) **turun 2**."],
+      "tanya": { "tipe": "angka", "teks": "f(0) = 3 − 2 = ? Itulah nilai b.", "kunci": 1,
+        "benar": "Tepat. b = 1, jadi **f(x) = 2x + 1**.",
+        "salah": "Dari x = 1 ke x = 0, f(x) turun 2. Hitung 3 − 2.",
+        "petunjuk": ["f(1) = 3.", "Mundur 1 langkah, f(x) berkurang 2."] }
+    },
+    {
+      "type": "jembatan", "tahap": "Jembatan", "judul": "Tahap 6: Grafik",
+      "fungsi": { "a": 2, "b": 1 }, "domain": [1, 2, 3, 4], "ke": 6,
+      "isi": ["Setiap pasangan menjadi satu **titik** pada grafik."],
+      "tanya": { "tipe": "pilihan", "teks": "Panah 3 → 7 menjadi titik yang mana?", "pilihan": ["(3, 7)", "(7, 3)", "(3, 3)"], "kunci": 0,
+        "benar": "Tepat. x = 3 dibaca di sumbu mendatar, f(x) = 7 di sumbu tegak.",
+        "salah": "Angka pertama selalu x (sumbu mendatar, biru)." }
+    },
+    {
+      "type": "mesin", "tahap": "Simulasi", "judul": "Mesin Fungsi",
+      "a": 2, "b": 1, "pilihanX": [1, 2, 3, 4],
+      "isi": ["Mesin ini memakai aturan yang sama: × 2, lalu + 1.", "Pilih x, lalu ketuk untuk memprosesnya."]
+    },
+    {
+      "type": "isian", "id": "m4-l1", "tahap": "Latihan", "judul": "Latihan 1", "latihan": true,
+      "isi": ["Tabel sebuah fungsi linear:"],
+      "tabel": [[1, 2], [2, 5], [3, 8], [4, 11]], "kosong": [4],
+      "tanya": { "tipe": "angka", "teks": "Berapa f(4)?", "kunci": 11,
+        "benar": "Tepat. f(x) selalu naik 3, jadi f(4) = 8 + 3 = 11.",
+        "salah": "Cari dulu polanya: f(x) naik berapa setiap x naik 1?",
+        "petunjuk": ["Bandingkan 2 dan 5, lalu 5 dan 8.", "f(x) naik 3 setiap langkah.", "f(4) = f(3) + 3."] }
+    },
+    {
+      "type": "isian", "id": "m4-l2", "tahap": "Latihan", "judul": "Latihan 2", "latihan": true,
+      "isi": ["Diagram panah sebuah fungsi:"],
+      "diagram": { "A": [1, 2, 3], "B": [3, 4, 5], "pairs": [[1, 3], [2, 4], [3, 5]] },
+      "tanya": { "tipe": "pilihan", "teks": "Manakah himpunan pasangan berurutannya?",
+        "pilihan": ["{(3, 1), (4, 2), (5, 3)}", "{(1, 3), (2, 4), (3, 5)}", "{(1, 2), (2, 3), (3, 4)}"], "kunci": 1,
+        "benar": "Tepat. Angka pertama x (pangkal panah), angka kedua f(x) (ujung panah).",
+        "salah": "Urutannya terbalik atau tidak sesuai panah. Pasangan ditulis (x, f(x)).",
+        "petunjuk": ["Pangkal panah ada di himpunan x.", "Panah 1 → 3 ditulis (1, 3)."] }
+    },
+    {
+      "type": "jelaskan", "id": "m4-jelaskan", "tahap": "Jelaskan", "judul": "Jelaskan ke temanmu",
+      "isi": ["Temanmu bertanya: mengapa diagram, tabel, dan grafik tadi disebut fungsi yang **sama**?"],
+      "pilihan": [
+        "Karena pasangan x dan f(x)-nya sama, hanya cara menulisnya berbeda.",
+        "Karena warnanya sama.",
+        "Karena banyak anggotanya sama-sama 4.",
+        "Karena grafiknya naik."
+      ],
+      "kunci": 0,
+      "model": "Semua bentuk memuat pasangan yang sama: (1, 3), (2, 5), (3, 7), (4, 9). Hanya cara menulisnya yang berbeda."
+    },
+    { "type": "refleksi", "tahap": "Refleksi", "judul": "Seberapa berat?" },
+    {
+      "type": "ringkasan", "tahap": "Ringkasan", "judul": "Ingat ini",
+      "poin": [
+        "Satu fungsi bisa ditulis sebagai diagram, pasangan, tabel, rumus, dan grafik.",
+        "**a** = kenaikan f(x) setiap x naik 1.",
+        "**b** = nilai f(x) saat x = 0."
+      ]
+    }
+  ]
+}

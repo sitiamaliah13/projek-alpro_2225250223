@@ -1,0 +1,101 @@
+{
+  "id": "m7",
+  "title": "Fungsi di Sekitarku",
+  "temuan": ["EL01", "EL05", "GL05", "DS03"],
+  "lencana": "Pemecah Masalah",
+  "cards": [
+    {
+      "type": "teks", "tahap": "Analogi", "judul": "Fungsi di sekitar kita",
+      "isi": ["Tarif ojek, biaya parkir, dan harga sewa sering mengikuti fungsi linear.", "Ada biaya **sekali bayar** dan biaya **per satuan**."]
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Empat langkah",
+      "isi": ["① **Pahami**: tandai informasi penting. ② **Rumuskan**: tulis f(x).", "③ **Hitung**: cari nilai fungsinya. ④ **Tafsirkan**: jawab pertanyaan sesuai cerita."]
+    },
+    {
+      "type": "literasi", "id": "m7-ojek", "tahap": "Contoh dibimbing", "judul": "Tarif ojek",
+      "structure_tag": "tarif-awal-per-satuan",
+      "stem": ["Tarif ojek: Rp5.000 saat naik, lalu Rp2.000 per km.", "Perjalanan Rani memakan waktu 15 menit. Rani naik sejauh 6 km. Uangnya Rp20.000."],
+      "tanya": "Cukupkah uang Rani?",
+      "info": [
+        { "teks": "Rp5.000 saat naik", "penting": true },
+        { "teks": "Rp2.000 per km", "penting": true },
+        { "teks": "15 menit", "penting": false },
+        { "teks": "6 km", "penting": true },
+        { "teks": "Rp20.000", "penting": true }
+      ],
+      "variabel": "x = jarak (km)",
+      "rumus": { "a": 2000, "b": 5000 },
+      "hitung": { "x": 6, "satuan": "rupiah" },
+      "tafsir": {
+        "pilihan": ["Cukup, karena Rp17.000 < Rp20.000", "Tidak cukup, karena Rp20.000 < Rp22.000", "Cukup, karena 6 km itu dekat"],
+        "kunci": 0,
+        "benar": "Tepat! Biayanya Rp17.000, jadi uang Rani cukup dan masih sisa Rp3.000.",
+        "salah": "Bandingkan hasil hitunganmu, Rp17.000, dengan uang Rani, Rp20.000."
+      },
+      "petunjuk": {
+        "pahami": ["Informasi apa yang dipakai untuk menghitung biaya?", "Waktu perjalanan tidak memengaruhi tarif."],
+        "rumuskan": ["Biaya per km dikalikan x.", "Biaya naik dibayar sekali, jadi ditambahkan.", "f(x) = 2.000x + 5.000"],
+        "hitung": ["Ganti x dengan 6.", "2.000 × 6 = 12.000, lalu tambah 5.000."],
+        "tafsirkan": ["Bandingkan biaya dengan uang Rani."]
+      }
+    },
+    {
+      "type": "teks", "tahap": "Pola sama", "judul": "Pola yang sama",
+      "isi": ["Soal berikut punya **pola yang sama**: biaya awal + biaya per satuan.", "Ceritanya berbeda, tetapi langkahnya sama."]
+    },
+    {
+      "type": "literasi", "id": "m7-l1", "tahap": "Latihan", "judul": "Sewa sepatu roda", "latihan": true,
+      "structure_tag": "tarif-awal-per-satuan",
+      "stem": ["Sewa sepatu roda: Rp10.000 di awal, lalu Rp3.000 per jam.", "Arena buka pukul 09.00. Bima bermain selama 4 jam. Uangnya Rp20.000."],
+      "tanya": "Cukupkah uang Bima?",
+      "info": [
+        { "teks": "Rp10.000 di awal", "penting": true },
+        { "teks": "Rp3.000 per jam", "penting": true },
+        { "teks": "pukul 09.00", "penting": false },
+        { "teks": "4 jam", "penting": true },
+        { "teks": "Rp20.000", "penting": true }
+      ],
+      "variabel": "x = lama bermain (jam)",
+      "rumus": { "a": 3000, "b": 10000 },
+      "hitung": { "x": 4, "satuan": "rupiah" },
+      "tafsir": {
+        "pilihan": [
+          "Cukup, karena Rp12.000 < Rp20.000",
+          "Tidak cukup, karena biayanya Rp22.000, lebih dari Rp20.000",
+          "Cukup, karena 4 jam tidak lama"
+        ],
+        "kunci": 1,
+        "benar": "Tepat! Biayanya Rp22.000. Uang Bima kurang Rp2.000.",
+        "salah": "Jangan lupa biaya awal Rp10.000. Bandingkan f(4) dengan Rp20.000."
+      },
+      "petunjuk": {
+        "pahami": ["Jam buka arena tidak memengaruhi biaya."],
+        "rumuskan": ["Biaya per jam dikalikan x, biaya awal ditambahkan."],
+        "hitung": ["3.000 × 4 = 12.000, lalu tambah 10.000."],
+        "tafsirkan": ["Bandingkan biaya dengan Rp20.000."]
+      }
+    },
+    {
+      "type": "jelaskan", "id": "m7-jelaskan", "tahap": "Jelaskan", "judul": "Jelaskan ke temanmu",
+      "isi": ["Temanmu menjawab biaya sepatu roda Rp12.000. Apa kesalahannya?"],
+      "pilihan": [
+        "Ia lupa menambahkan biaya awal Rp10.000.",
+        "Ia salah mengalikan 3.000 × 4.",
+        "Ia seharusnya memakai jam buka arena.",
+        "Jawabannya sudah benar."
+      ],
+      "kunci": 0,
+      "model": "3.000 × 4 = 12.000 baru biaya per jam. Biaya awal Rp10.000 harus ditambahkan, jadi totalnya Rp22.000."
+    },
+    { "type": "refleksi", "tahap": "Refleksi", "judul": "Seberapa berat?" },
+    {
+      "type": "ringkasan", "tahap": "Ringkasan", "judul": "Ingat ini",
+      "poin": [
+        "Tandai informasi penting. Abaikan informasi yang tidak dipakai.",
+        "Biaya awal ditambahkan sekali; biaya per satuan dikalikan x.",
+        "Jawaban akhir harus menjawab pertanyaan dalam cerita."
+      ]
+    }
+  ]
+}

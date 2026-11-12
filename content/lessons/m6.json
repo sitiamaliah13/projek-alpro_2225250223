@@ -1,0 +1,67 @@
+{
+  "id": "m6",
+  "title": "Menyusun Rumus Fungsi",
+  "temuan": ["F-2", "IL04", "GL02", "DS02"],
+  "lencana": "Perumus Andal",
+  "cards": [
+    {
+      "type": "teks", "tahap": "Analogi", "judul": "Naik tangga",
+      "isi": ["Saat naik tangga, setiap anak tangga menambah tinggimu dengan besar yang sama.", "Pada fungsi linear, setiap x naik 1, f(x) berubah **sama besar**."]
+    },
+    {
+      "type": "teks", "tahap": "Konsep", "judul": "Dua kunci rumus",
+      "isi": ["Rumus f(x) = ax + b punya dua kunci.", "**a** = perubahan f(x) : perubahan x.", "**b** dicari dengan memasukkan satu titik ke rumus."]
+    },
+    {
+      "type": "contoh", "tahap": "Contoh lengkap", "judul": "Dari dua nilai fungsi",
+      "isi": ["Diketahui f(2) = 5 dan f(−1) = −4. Cari rumusnya."],
+      "langkah": [
+        "**Langkah 1.** Susun tabel: x = 2 → 5 dan x = −1 → −4.",
+        "**Langkah 2.** Perubahan x: 2 − (−1) = 3. Perubahan f(x): 5 − (−4) = 9.",
+        "**Langkah 3.** a = 9 : 3 = 3.",
+        "**Langkah 4.** Dari f(2): 3 × 2 + b = 5, jadi b = −1.",
+        "**Cek Balik.** f(−1) = 3 × (−1) − 1 = −4 ✓. Jadi f(x) = 3x − 1."
+      ]
+    },
+    {
+      "type": "rumus", "id": "m6-s1", "tahap": "Contoh rumpang", "judul": "Dari tabel", "mode": "tabel", "latihan": true,
+      "titik": [[1, 1], [2, 4], [3, 7], [4, 10]],
+      "isi": ["Tabel sebuah fungsi linear. Susun rumusnya langkah demi langkah."]
+    },
+    {
+      "type": "rumus", "id": "m6-l1", "tahap": "Latihan", "judul": "Dari dua nilai", "mode": "dua_nilai", "latihan": true,
+      "titik": [[3, 4], [-1, -8]],
+      "isi": ["Diketahui dua nilai sebuah fungsi linear."]
+    },
+    {
+      "type": "teks", "tahap": "Cara lain", "judul": "Cara lain: eliminasi",
+      "isi": ["Dari f(3) = 4 dan f(−1) = −8, tulis: 3a + b = 4 dan −a + b = −8.", "Kurangkan keduanya: 4a = 12, jadi a = 3. Lalu b = 4 − 9 = −5.", "Hasilnya sama: f(x) = 3x − 5. Pilih cara yang menurutmu paling mudah."]
+    },
+    {
+      "type": "rumus", "id": "m6-l2", "tahap": "Latihan", "judul": "Biaya parkir", "mode": "dua_nilai", "latihan": true,
+      "titik": [[1, 5000], [3, 9000]],
+      "isi": ["Parkir 1 jam Rp5.000. Parkir 3 jam Rp9.000.", "x = lama parkir (jam), f(x) = biaya (rupiah)."]
+    },
+    {
+      "type": "jelaskan", "id": "m6-jelaskan", "tahap": "Jelaskan", "judul": "Jelaskan ke temanmu",
+      "isi": ["Temanmu mendapat f(x) = 3x + 1 dari f(2) = 5 dan f(−1) = −4. Bagaimana memeriksanya?"],
+      "pilihan": [
+        "Hitung f(−1) dengan rumusnya: 3 × (−1) + 1 = −2, bukan −4. Jadi rumusnya salah.",
+        "Rumusnya pasti benar karena a = 3.",
+        "Cukup periksa f(2) saja.",
+        "Ganti x dengan 0."
+      ],
+      "kunci": 0,
+      "model": "Pakai Cek Balik: masukkan semua titik yang diketahui ke rumus. Rumus benar bila semuanya cocok."
+    },
+    { "type": "refleksi", "tahap": "Refleksi", "judul": "Seberapa berat?" },
+    {
+      "type": "ringkasan", "tahap": "Ringkasan", "judul": "Ingat ini",
+      "poin": [
+        "a = perubahan f(x) : perubahan x.",
+        "b dicari dengan memasukkan satu titik ke rumus.",
+        "Selalu lakukan **Cek Balik** dengan titik yang lain."
+      ]
+    }
+  ]
+}
