@@ -14,6 +14,7 @@ import Materi from './pages/Materi.jsx'
 import Latihan from './pages/Latihan.jsx'
 import Tes from './pages/Tes.jsx'
 import Ekspor from './pages/Ekspor.jsx'
+import TanyaMateri from './pages/TanyaMateri.jsx'
 
 /** Halaman selain Masuk hanya bisa dibuka setelah masuk. */
 function Wajib({ children }) {
@@ -39,6 +40,7 @@ export default function App() {
           <Route path="/materi" element={<Wajib><Materi /></Wajib>} />
           <Route path="/latihan" element={<Wajib><Latihan /></Wajib>} />
           <Route path="/tes" element={<Wajib><Tes /></Wajib>} />
+          <Route path="/tanya" element={<Wajib><TanyaMateri /></Wajib>} />
           <Route path="/ekspor" element={<Wajib><Ekspor /></Wajib>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

@@ -4,6 +4,7 @@
 > Sudah ada: `GET /health`, `POST /auth/login`, `POST /auth/daftar` (kode samaran otomatis `FK-UM-xxxxxx`, kelas "Umum", 10/menit/IP), `GET /me`, `GET /progress`, **`PUT /progress`**.
 > `PUT /progress` menggantikan `POST /attempts/batch`, `/explanations`, `/cognitive-load`, dan `/lessons/{id}/complete`:
 > aplikasi mengirim salinan progres utuh, lalu server memecahnya ke tabel rinci tanpa data ganda.
+> **`POST /ai/mediator`** (Mediator RMT, DeepSeek): lihat §8.
 > Endpoint lain di bawah masih rancangan. Konten & penilaian latihan masih di aplikasi (kunci latihan demo).
 
 - **Base URL dev:** `http://localhost:8000`
@@ -190,3 +191,19 @@ Posttest `403 LOCKED` sampai modul MVP selesai; `409` bila sudah dikerjakan.
 
 ## 7. Ekspor Data
 Tidak ada endpoint publik. Data diekspor lewat dashboard Supabase (CSV) atau `backend/scripts/export.py`, menghasilkan N-Gain, rata-rata beban per sub-materi, tren `error_tag`, dan penggunaan hint.
+
+## 8. Mediator RMT
+### `POST /ai/mediator` (butuh JWT)
+```json
+{ "fase": "Fase III · Praktik Konstruksi Konsep", "fungsi_kognitif": "Memberi bukti logis",
+  "konteks": "<isi layar tanpa kunci>", "pesan": "Aku bingung kenapa ini bukan fungsi",
+  "riwayat": [{ "peran": "siswa", "teks": "..." }, { "peran": "mediator", "teks": "..." }] }
+```
+→ `{ "balasan": "Kamu sudah memeriksa angka 1 dengan teliti. Sekarang lihat angka 2: berapa panah yang keluar? Apa buktinya?" }`
+
+- Batas: `pesan` ≤ 500 karakter, `riwayat` ≤ 6, 20 pertanyaan/menit dan 1000/hari per siswa (tanpa login: per IP) → `429 RATE_LIMITED`.
+- Penyedia AI: DeepSeek bila `DEEPSEEK_API_KEY` ada; bila tidak, Gemini gratis (`GEMINI_API_KEY`), lalu Groq gratis (`GROQ_API_KEY`).
+- `503 AI_NOT_CONFIGURED` bila kedua kunci belum diatur; `502 AI_UNAVAILABLE` bila DeepSeek gagal.
+- Balasan dirapikan server menjadi ≤ 3 kalimat (pertanyaan pemandu terakhir dipertahankan) dan tanpa Markdown.
+- Soal cerita: `konteks` diawali `SOAL LITERASI 4 LANGKAH`, mediator menuntun Pahami → Rumuskan → Hitung → Tafsirkan.
+- Server tidak menyimpan isi percakapan. Aplikasi hanya mencatat jumlah pemakaian (`progres.mediator`).

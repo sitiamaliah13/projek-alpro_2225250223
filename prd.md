@@ -83,6 +83,12 @@ Bagian ini adalah inti dokumen. Setiap fitur pada §6 harus punya bukti di tabel
   - Pernyataan EL04 tampak berbeda (transisi cepat vs tempo pelan).
   - Kesalahan tanda (IL05) tidak muncul pada tugas pemicu.
 
+### 3.5 Model Pembelajaran RMT (arahan tugas dosen, 24 Nov 2026)
+Aplikasi memakai model **Rigorous Mathematical Thinking** (Kinard & Kozulin, 2008); ringkasan di [docs/ringkasan-rmt.md](docs/ringkasan-rmt.md). Kode bukti:
+- **RMT-1**: tiga fase proses (Pengembangan Kognitif → Konten sebagai Proses → Praktik Konstruksi Konsep).
+- **RMT-2**: fungsi kognitif dinamai secara eksplisit agar siswa sadar cara berpikirnya.
+- **RMT-3**: mediasi MLE (intensionalitas, makna, transendensi, rasa mampu): mediator bertanya, tidak memberi jawaban.
+
 ## 4. Pengguna
 **Peran tunggal: siswa SMP kelas VIII** (data kebutuhan diambil dari siswa kelas IX yang merefleksikan pengalamannya).
 
@@ -138,6 +144,10 @@ Kurikulum Merdeka **Fase D**, elemen **Aljabar**, topik **Relasi dan Fungsi** (k
 | F16 | Rating beban kognitif | Skala 1–9 setelah tiap sub-materi | — | Pengukuran CLT |
 | F17 | Mesin Fungsi 3D (Three.js) | Ilustrasi pelengkap: bola x masuk mesin "×2 lalu −3" dan keluar f(x). Hanya bergerak saat diketuk | EL02, IL04 | Visual tenang |
 | F18 | Posttest & progres | Posttest paralel; bintang & riwayat sederhana | — | Ukur peningkatan |
+| F20 | Penanda fase RMT & fungsi kognitif | Satu baris teks di setiap layar; arti fungsi kognitif dibuka bila diketuk | RMT-1, RMT-2 | Signaling, tanpa visual tambahan |
+| F21 | **Mediator RMT (AI DeepSeek)** | Tombol "Tanya Mediator", hanya bila diminta. Maksimal 50 pertanyaan per layar; juga ada menu **Tanya AI** untuk tanya materi bebas. Balasan ≤ 3 kalimat berupa pertanyaan pemandu dan permintaan bukti logis, **tanpa kunci jawaban**. Butuh internet + kode siswa server | RMT-3, GL03 | Bantuan sesuai kebutuhan |
+| F22 | Mediator literasi 4 langkah | Di soal cerita (M7), Tanya AI menanyakan siswa sedang di langkah mana (Pahami → Rumuskan → Hitung → Tafsirkan), lalu hanya membantu langkah itu | EL05, RMT-3, literasi | Segmenting |
+| F23 | Ringkasan evaluasi di Ekspor | Ekspor JSON memuat `ringkasan`: % benar latihan, rata-rata beban kognitif, petunjuk dipakai, dan jumlah Tanya AI per modul (tanpa isi percakapan) | — | Bukti evaluasi tahap 2 |
 | F19 | PWA + offline | Dapat dipasang di layar utama Android; konten tercache | — | Hemat kuota |
 
 ### 6.2 Setelah MVP
@@ -148,7 +158,7 @@ Kurikulum Merdeka **Fase D**, elemen **Aljabar**, topik **Relasi dan Fungsi** (k
 - Analisis jawaban "jelaskan" dengan kata kunci
 
 ### 6.3 Di Luar Lingkup
-Chat, papan peringkat publik, iklan, pembayaran, serta data pribadi selain nama panggilan & kelas.
+Chat bebas (Mediator F21 dibatasi pada materi relasi-fungsi, 50 pertanyaan), papan peringkat publik, iklan, pembayaran, serta data pribadi selain nama panggilan & kelas.
 
 ## 7. Alur Pengguna
 ```

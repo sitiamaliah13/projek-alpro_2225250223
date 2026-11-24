@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import Layar from '../components/Layar.jsx'
 import Tombol from '../components/Tombol.jsx'
@@ -19,7 +19,10 @@ import KartuRumus from '../components/kartu/KartuRumus.jsx'
 import KartuMesin from '../components/kartu/KartuMesin.jsx'
 import KartuSorot from '../components/kartu/KartuSorot.jsx'
 import KartuLiterasi from '../components/kartu/KartuLiterasi.jsx'
+import PenandaRmt from '../components/PenandaRmt.jsx'
+import MediatorRmt from '../components/MediatorRmt.jsx'
 import { ambilPelajaran } from '../data/konten.js'
+import { rmtUntuk } from '../lib/rmt.js'
 import { useProgres } from '../data/ProgresContext.jsx'
 
 const KARTU = {
@@ -65,7 +68,7 @@ function hitungBintang(kartu, hasil) {
 export default function Pelajaran() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { ubah } = useProgres()
+  const { ubah, siswa } = useProgres()
   const pelajaran = ambilPelajaran(id)
   const [cari] = useSearchParams()
   // ?mulai=n dari menu Latihan Interaktif: langsung ke layar latihan pertama
@@ -75,6 +78,13 @@ export default function Pelajaran() {
   })
   const [selesai, setSelesai] = useState({}) // indeks kartu → true
   const [hasil, setHasil] = useState({}) // item_id → hasil latihan pertama
+  const [mediatorBuka, setMediatorBuka] = useState(false)
+  const panelMediator = useRef(null)
+  // Layar baru: panel mediator tertutup lagi. Saat dibuka, gulir ke panel (tanpa animasi, A4).
+  useEffect(() => setMediatorBuka(false), [ke])
+  useEffect(() => {
+    if (mediatorBuka) panelMediator.current?.scrollIntoView({ block: 'start' })
+  }, [mediatorBuka])
 
   if (!pelajaran) {
     return (
@@ -88,6 +98,12 @@ export default function Pelajaran() {
   const Komponen = KARTU[kartu.type]
   const terakhir = ke === pelajaran.cards.length - 1
   const bolehLanjut = TANPA_INTERAKSI.has(kartu.type) || selesai[ke]
+  const rmt = rmtUntuk(pelajaran.id, kartu)
+  // Hanya jumlah pemakaian yang dicatat (untuk evaluasi), bukan isi percakapan.
+  const catatMediator = () =>
+    ubah((p) => {
+      ;(p.mediator ??= []).push({ lesson_id: pelajaran.id, card: ke, ts: new Date().toISOString() })
+    })
 
   const onSelesai = (h) => {
     if (selesai[ke]) return // hanya catat penyelesaian pertama
@@ -127,6 +143,12 @@ export default function Pelajaran() {
       judul={pelajaran.title}
       kembali="/peta"
       bawah={
+        <>
+        {kartu?.type !== 'refleksi' && (
+          <Tombol jenis="petunjuk" className="mb-2" onClick={() => setMediatorBuka((b) => !b)} aria-expanded={mediatorBuka}>
+            🧭 {mediatorBuka ? 'Tutup Tanya AI' : 'Bingung? Tanya AI'}
+          </Tombol>
+        )}
         <div className="flex gap-2">
           {ke > 0 && (
             <Tombol jenis="kedua" onClick={() => setKe(ke - 1)}>
@@ -137,15 +159,23 @@ export default function Pelajaran() {
             {terakhir ? 'Selesai' : 'Lanjut'}
           </Tombol>
         </div>
+        </>
       }
     >
       {/* Posisi ditulis dengan teks, tidak hanya titik warna (design.md §8) */}
       <p className="text-base text-muted">
         {kartu.tahap} · Layar {ke + 1} dari {pelajaran.cards.length}
       </p>
-      <h2 className="mb-3 text-xl font-bold">{kartu.judul}</h2>
+      <h2 className="text-xl font-bold">{kartu.judul}</h2>
+      {/* Lapisan RMT: fase dan fungsi kognitif sasaran (RMT-1, RMT-2) */}
+      <PenandaRmt rmt={rmt} />
       {/* key memastikan setiap layar mulai dari keadaan bersih */}
       <Komponen key={ke} kartu={kartu} onSelesai={onSelesai} lencana={pelajaran.lencana} />
+      {mediatorBuka && kartu.type !== 'refleksi' && (
+        <div ref={panelMediator}>
+          <MediatorRmt key={`m${ke}`} kartu={kartu} rmt={rmt} token={siswa?.token} onPakai={catatMediator} selaluBuka />
+        </div>
+      )}
     </Layar>
   )
 }

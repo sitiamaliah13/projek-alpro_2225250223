@@ -1,0 +1,45 @@
+{
+  "sumber": "Kinard, J. T., & Kozulin, A. (2008). Rigorous Mathematical Thinking. Cambridge University Press. Ringkasan: docs/ringkasan-rmt.md",
+  "fase": {
+    "I": { "nama": "Fase I · Pengembangan Kognitif", "tujuan": "Memakai alat berpikir untuk melatih fungsi kognitif." },
+    "II": { "nama": "Fase II · Konten sebagai Proses", "tujuan": "Membangun konsep dari pengalaman sehari-hari dan menemukan pola." },
+    "III": { "nama": "Fase III · Praktik Konstruksi Konsep", "tujuan": "Memakai alat matematika dan fungsi kognitif untuk membangun konsep." },
+    "R": { "nama": "Refleksi & Evaluasi Diri", "tujuan": "Memeriksa cara berpikir sendiri dan menilai kemajuan." }
+  },
+  "fungsiKognitif": {
+    "pengetahuan-awal": { "nama": "Mengaktifkan pengetahuan awal", "arti": "Mengingat pengalaman lama yang mirip dengan masalah sekarang." },
+    "membandingkan": { "nama": "Membandingkan", "arti": "Mencari persamaan dan perbedaan berdasarkan satu ciri yang jelas." },
+    "label-visual": { "nama": "Memberi label dan membayangkan", "arti": "Memberi nama sesuai ciri penting, lalu membayangkan bentuknya." },
+    "cari-sistematis": { "nama": "Mencari secara sistematis", "arti": "Memeriksa satu per satu dengan urutan agar tidak ada yang terlewat." },
+    "kode": { "nama": "Mengode dan membaca kode", "arti": "Memindahkan makna ke simbol, atau membaca makna dari simbol." },
+    "keajekan": { "nama": "Mempertahankan keajekan", "arti": "Menemukan apa yang tetap sama ketika hal lain berubah." },
+    "analisis-integrasi": { "nama": "Mengurai dan menyatukan", "arti": "Memecah keseluruhan menjadi bagian, lalu menyusunnya kembali." },
+    "teliti": { "nama": "Bersikap teliti", "arti": "Fokus dan tepat, termasuk pada tanda dan satuan." },
+    "definisi-masalah": { "nama": "Mendefinisikan masalah", "arti": "Menentukan dengan tepat apa yang ditanya dan apa yang diketahui." },
+    "bukti-logis": { "nama": "Memberi bukti logis", "arti": "Menjelaskan alasan yang masuk akal untuk mendukung jawaban." },
+    "hipotesis": { "nama": "Berpikir hipotetis", "arti": "Membuat dugaan, lalu mengujinya dengan bukti." },
+    "hubungan-fungsional": { "nama": "Membentuk hubungan fungsional", "arti": "Melihat bagaimana perubahan satu nilai menentukan nilai lain." },
+    "induktif-deduktif": { "nama": "Berpikir induktif-deduktif", "arti": "Menemukan aturan umum dari contoh, lalu memakainya pada kasus baru." },
+    "elaborasi": { "nama": "Merefleksikan kegiatan matematika", "arti": "Menceritakan langkah dan fungsi kognitif yang sudah kamu pakai." }
+  },
+  "petaTahap": {
+    "Analogi": { "fase": "II", "fungsi": "pengetahuan-awal" },
+    "Konsep": { "fase": "II", "fungsi": "membandingkan" },
+    "Simulasi": { "fase": "I", "fungsi": "cari-sistematis" },
+    "Jembatan": { "fase": "III", "fungsi": "kode" },
+    "Contoh lengkap": { "fase": "III", "fungsi": "induktif-deduktif" },
+    "Contoh rumpang": { "fase": "III", "fungsi": "induktif-deduktif" },
+    "Contoh dibimbing": { "fase": "III", "fungsi": "induktif-deduktif" },
+    "Pola sama": { "fase": "III", "fungsi": "keajekan" },
+    "Cara lain": { "fase": "III", "fungsi": "membandingkan" },
+    "Latihan": { "fase": "III", "fungsi": "definisi-masalah" },
+    "Jelaskan": { "fase": "III", "fungsi": "bukti-logis" },
+    "Ringkasan": { "fase": "R", "fungsi": "elaborasi" },
+    "Refleksi": { "fase": "R", "fungsi": "elaborasi" }
+  },
+  "petaModul": {
+    "m4": { "Latihan": "hubungan-fungsional" },
+    "m5": { "Latihan": "teliti" },
+    "m6": { "Latihan": "induktif-deduktif", "Contoh lengkap": "hubungan-fungsional" }
+  }
+}

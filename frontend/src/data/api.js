@@ -12,6 +12,8 @@ const PESAN_UMUM = {
   INACTIVE: 'Kode siswa ini sudah tidak aktif. Tanyakan ke guru.',
   RATE_LIMITED: 'Terlalu banyak percobaan. Tunggu 1 menit, lalu coba lagi.',
   TOKEN_EXPIRED: 'Sesi habis. Masukkan kode siswa lagi.',
+  AI_NOT_CONFIGURED: 'Mediator belum diaktifkan oleh guru. Pakai petunjuk dulu, ya.',
+  AI_UNAVAILABLE: 'Mediator sedang tidak bisa dihubungi. Coba lagi nanti.',
 }
 
 export class GalatApi extends Error {
@@ -65,4 +67,13 @@ export async function ambilProgresServer(token, opsi = {}) {
 /** PUT /progress */
 export function simpanProgresServer(token, data, opsi = {}) {
   return panggil('/progress', { method: 'PUT', token, body: { data }, ...opsi })
+}
+
+/**
+ * POST /ai/mediator → teks balasan Mediator RMT (DeepSeek di server).
+ * body: { fase, fungsi_kognitif, konteks, pesan, riwayat: [{ peran: 'siswa'|'mediator', teks }] }
+ */
+export async function tanyaMediator(token, body, opsi = {}) {
+  const isi = await panggil('/ai/mediator', { method: 'POST', token, body, ...opsi })
+  return isi.balasan
 }

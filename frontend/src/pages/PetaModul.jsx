@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import AppShell from '../components/AppShell.jsx'
+import Ikon from '../components/Ikon.jsx'
 import UmpanBalik from '../components/UmpanBalik.jsx'
 import StudyTime from '../components/StudyTime.jsx'
 import HeroBanner from '../components/dashboard/HeroBanner.jsx'
@@ -24,6 +26,21 @@ export default function PetaModul() {
           ke={berikut ? tautanModul(berikut) : '/tes'}
           labelLanjut={selesai === 0 ? 'Mulai Belajar' : berikut ? `Lanjut: ${berikut.title}` : 'Ke Tes Literasi'}
         />
+
+        {/* Tanya AI (Mediator RMT, RMT-3) ditampilkan jelas agar siswa tahu fiturnya ada */}
+        <Link
+          to="/tanya"
+          className="flex min-h-tap items-center gap-4 rounded-3xl border-2 border-domain bg-white p-4"
+        >
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-domain">
+            <Ikon nama="tanya" className="h-7 w-7" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-bold">Bingung? Tanya AI</span>
+            <span className="block text-muted">Tanyakan materi relasi dan fungsi kapan saja.</span>
+          </span>
+          <span className="font-semibold text-domain">Buka →</span>
+        </Link>
 
         {progres.diagnostic.penguatanTanda && (
           <UmpanBalik jenis="info">Saran: perhatikan tanda bilangan negatif (warna ungu) di modul Nilai Fungsi.</UmpanBalik>

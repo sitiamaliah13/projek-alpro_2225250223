@@ -132,7 +132,7 @@ Skema yang benar-benar dipakai ada di [supabase/migrations/001_init.sql](supabas
 (menyesuaikan bentuk progres aplikasi; tabel konten `modules/lessons/items` belum dibuat karena konten masih di JSON).
 
 Variabel lingkungan:
-- Backend: `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `JWT_SECRET`, `CORS_ORIGINS`
+- Backend: `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `JWT_SECRET`, `CORS_ORIGINS`, `DEEPSEEK_API_KEY` atau alternatif gratis `GEMINI_API_KEY` / `GROQ_API_KEY` (Mediator RMT; hanya di server), opsional `DEEPSEEK_MODEL`
 - Frontend: `VITE_API_URL`
 
 ## 9. Performa 3D
