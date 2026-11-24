@@ -109,6 +109,12 @@ Langkah berikutnya terbuka setelah langkah sebelumnya selesai. Tombol "Kerjakan 
 
 Aturan 3D: latar polos, ≤ 3 warna semantik, kamera tetap (putar opsional), tanpa rotasi otomatis, label HTML di dekat objek, dan sakelar **Matikan 3D**.
 
+### 4.7 Lapisan RMT (F20, F21) — RMT-1..3
+- Di bawah judul layar: `Fase II · Konten sebagai Proses · Fungsi kognitif: Membandingkan`. Arti fungsi kognitif dibuka dengan mengetuk (A8).
+- Di bawah kartu: tautan **🧭 Tanya Mediator**. Panel berisi kotak tulis, riwayat singkat, dan sisa kuota (50 per layar). Tidak ada animasi; teks status "Mediator sedang berpikir…".
+- Balasan AI dipotong server menjadi ≤ 3 kalimat (A1). Di soal literasi, AI menuntun 4 langkah satu per satu (A7).
+- Isi layar dikirim ke AI **tanpa** kunci jawaban, umpan balik, dan petunjuk (`frontend/src/lib/rmt.js`). Nama/kode siswa tidak dikirim.
+
 ## 5. Gaya Visual
 - Mobile-first, acuan lebar 360 px, satu kolom, tombol utama di zona jempol.
 - Huruf Nunito/Inter; isi 16–18 px, judul 22 px, *line-height* 1,5.

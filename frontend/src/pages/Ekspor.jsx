@@ -26,6 +26,7 @@ export default function Ekspor() {
     ['Jawaban latihan', progres.attempts.length],
     ['Penjelasan ditulis', progres.explanations.length],
     ['Rating beban', progres.loads.length],
+    ['Tanya AI dipakai', (progres.mediator ?? []).length],
   ]
 
   return (

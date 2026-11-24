@@ -7,6 +7,7 @@ const PATH = {
   materi: <path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2zM4 5v16M8 7h7M8 11h7" />,
   latihan: <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM15 16.5l2 2 3.5-4" />,
   tes: <path d="M9 4h6v3H9zM7 5H5v16h14V5h-2M8 12l2 2 5-5M8 17h8" />,
+  tanya: <path d="M4 5h16v11H9l-5 4zM9 9h6M9 12h4" />,
   ekspor: <path d="M12 3v12M7 10l5 5 5-5M4 19h16" />,
   cek: <path d="M12 21a9 9 0 110-18 9 9 0 010 18zM8 12l3 3 5-6" />,
   relasi: <path d="M5 6h3M5 12h3M5 18h3M16 6h3M16 12h3M16 18h3M8 6l8 6M8 12l8-6M8 18l8 0" />,

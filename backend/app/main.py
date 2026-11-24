@@ -7,6 +7,7 @@ Endpoint:
   GET  /me              status siswa
   GET  /progress        ambil progres tersimpan (pindah perangkat)
   PUT  /progress        simpan progres + isi tabel rinci untuk peneliti
+  POST /ai/mediator     Mediator RMT (DeepSeek): pertanyaan pemandu, bukan kunci jawaban
 """
 
 from __future__ import annotations
@@ -16,10 +17,12 @@ import secrets
 from datetime import datetime, timezone
 from typing import Any
 
-from fastapi import Depends, FastAPI, Request
+import httpx
+from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
+from .ai import MediatorBody, PembatasAi, susun_pesan, tanya_deepseek
 from .auth import MASA_TOKEN, PembatasLogin, buat_token, galat, id_siswa_dari_header
 from .db import Db, get_db
 from .sinkron import KONFLIK, baris_dari_progres
@@ -37,6 +40,7 @@ app.add_middleware(
 
 pembatas = PembatasLogin()
 pembatas_daftar = PembatasLogin(batas=10)
+pembatas_ai = PembatasAi()
 
 KELAS_UMUM = "Umum"  # pengguna tanpa kode dari guru; siswa penelitian memakai kode berlabel P01, P02, ...
 HURUF_KODE = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"  # tanpa 0/O, 1/I/L agar tidak tertukar
@@ -155,3 +159,27 @@ def simpan_progres(
         jumlah[tabel] = len(baris)
     db.update("students", {"id": student_id}, {"last_seen_at": waktu})
     return {"saved": True, "updated_at": waktu, "rows": jumlah}
+
+
+@app.post("/ai/mediator")
+def mediator(
+    body: MediatorBody,
+    request: Request,
+    authorization: str | None = Header(default=None),
+    db: Db = Depends(get_db),
+) -> dict[str, str]:
+    """Mediator RMT. Login tidak wajib agar tetap jalan saat database dijeda.
+    Dengan token: dibatasi per siswa (siswa nonaktif ditolak). Tanpa token: dibatasi per IP."""
+    student_id: str | None = None
+    if authorization:
+        try:
+            student_id = id_siswa_dari_header(authorization)
+        except HTTPException:
+            student_id = None  # token kedaluwarsa: perlakukan sebagai tamu
+    if student_id:
+        try:
+            _siswa(db, student_id)
+        except httpx.HTTPError:
+            pass  # database tidak terjangkau: mediator tetap melayani
+    pembatas_ai.cek(student_id or f"ip:{_ip(request)}")
+    return {"balasan": tanya_deepseek(susun_pesan(body))}

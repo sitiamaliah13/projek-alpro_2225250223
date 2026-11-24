@@ -193,3 +193,152 @@ def test_daftar_dibatasi_per_ip(client: TestClient) -> None:
     for _ in range(10):
         assert client.post("/auth/daftar").status_code == 201
     assert client.post("/auth/daftar").status_code == 429
+
+
+# ---------- Mediator RMT (DeepSeek ditiru, tidak ada panggilan internet) ----------
+import httpx  # noqa: E402
+
+from app import ai  # noqa: E402
+
+PESAN_AI = {"fase": "Fase III", "fungsi_kognitif": "Memberi bukti logis", "konteks": "Apakah relasi ini fungsi?",
+            "pesan": "Aku bingung", "riwayat": [{"peran": "siswa", "teks": "Halo"}, {"peran": "mediator", "teks": "Hai"}]}
+
+
+class _Respon:
+    def __init__(self, status: int, data: Any) -> None:
+        self.status_code = status
+        self._data = data
+
+    def json(self) -> Any:
+        return self._data
+
+
+class _KlienTiruan:
+    def __init__(self, respon: _Respon) -> None:
+        self.respon = respon
+        self.dikirim: dict[str, Any] = {}
+
+    def post(self, url: str, json: Any, headers: dict[str, str]) -> _Respon:
+        self.dikirim = {"url": url, "json": json, "headers": headers}
+        return self.respon
+
+
+@pytest.fixture()
+def ai_tiruan(monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
+    monkeypatch.setenv("DEEPSEEK_API_KEY", "sk-tes")
+    main.pembatas_ai = ai.PembatasAi()
+    catat: dict[str, Any] = {}
+
+    def palsu(pesan: list[dict[str, str]]) -> str:
+        catat["pesan"] = pesan
+        return "Coba bandingkan pasangan angka 2. Apa buktinya?"
+
+    monkeypatch.setattr(main, "tanya_deepseek", palsu)
+    return catat
+
+
+def test_mediator_tanpa_login_dibatasi_per_ip(client: TestClient, ai_tiruan: dict[str, Any]) -> None:
+    for _ in range(ai.BATAS_PER_MENIT):
+        assert client.post("/ai/mediator", json=PESAN_AI).status_code == 200
+    assert client.post("/ai/mediator", json=PESAN_AI).status_code == 429
+    # Siswa yang login punya jatah sendiri, terpisah dari jatah IP.
+    assert client.post("/ai/mediator", headers=_auth(), json=PESAN_AI).status_code == 200
+
+
+def test_mediator_token_rusak_dianggap_tamu(client: TestClient, ai_tiruan: dict[str, Any]) -> None:
+    r = client.post("/ai/mediator", headers={"Authorization": "Bearer palsu"}, json=PESAN_AI)
+    assert r.status_code == 200
+
+
+def test_mediator_tetap_jalan_saat_database_mati(client: TestClient, db: DbTiruan, ai_tiruan: dict[str, Any]) -> None:
+    def mati(*a: Any, **k: Any) -> Any:
+        raise httpx.ConnectError("database dijeda")
+
+    db.select = mati  # type: ignore[method-assign]
+    assert client.post("/ai/mediator", headers=_auth(), json=PESAN_AI).status_code == 200
+
+
+def test_mediator_menjawab_dan_menyusun_konteks(client: TestClient, ai_tiruan: dict[str, Any]) -> None:
+    r = client.post("/ai/mediator", headers=_auth(), json=PESAN_AI)
+    assert r.status_code == 200 and "buktinya" in r.json()["balasan"]
+    pesan = ai_tiruan["pesan"]
+    assert pesan[0]["role"] == "system" and "JANGAN memberi jawaban akhir" in pesan[0]["content"]
+    assert "Memberi bukti logis" in pesan[1]["content"]
+    assert [p["role"] for p in pesan[2:]] == ["user", "assistant", "user"]
+
+
+def test_mediator_siswa_nonaktif_ditolak(client: TestClient, ai_tiruan: dict[str, Any]) -> None:
+    assert client.post("/ai/mediator", headers=_auth(ID_NONAKTIF), json=PESAN_AI).status_code == 403
+
+
+def test_mediator_pesan_kosong_atau_riwayat_panjang_ditolak(client: TestClient, ai_tiruan: dict[str, Any]) -> None:
+    assert client.post("/ai/mediator", headers=_auth(), json={**PESAN_AI, "pesan": ""}).status_code == 422
+    panjang = {**PESAN_AI, "riwayat": [{"peran": "siswa", "teks": "a"}] * 7}
+    assert client.post("/ai/mediator", headers=_auth(), json=panjang).status_code == 422
+
+
+def test_mediator_dibatasi_per_menit(client: TestClient, ai_tiruan: dict[str, Any]) -> None:
+    for _ in range(ai.BATAS_PER_MENIT):
+        assert client.post("/ai/mediator", headers=_auth(), json=PESAN_AI).status_code == 200
+    r = client.post("/ai/mediator", headers=_auth(), json=PESAN_AI)
+    assert r.status_code == 429 and r.json()["detail"]["code"] == "RATE_LIMITED"
+
+
+def test_pembatas_ai_harian() -> None:
+    p = ai.PembatasAi(per_menit=100, per_hari=3)
+    for i in range(3):
+        p.cek("s", sekarang=i * 100.0)
+    with pytest.raises(Exception):
+        p.cek("s", sekarang=400.0)
+    p.cek("s", sekarang=86400.0 + 150)  # dua catatan lama sudah lewat sehari
+
+
+def test_tanya_deepseek_tanpa_kunci(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    with pytest.raises(Exception) as e:
+        ai.tanya_deepseek([{"role": "user", "content": "x"}])
+    assert e.value.detail["code"] == "AI_NOT_CONFIGURED"
+
+
+def test_tanya_deepseek_berhasil_dan_gagal(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("DEEPSEEK_API_KEY", "sk-tes")
+    k = _KlienTiruan(_Respon(200, {"choices": [{"message": {"content": "  Apa buktinya?  "}}]}))
+    assert ai.tanya_deepseek([{"role": "user", "content": "x"}], klien=k) == "Apa buktinya?"
+    assert k.dikirim["headers"]["Authorization"] == "Bearer sk-tes"
+    assert k.dikirim["json"]["model"] == ai.MODEL
+    for respon in (_Respon(500, {}), _Respon(200, {"choices": []})):
+        with pytest.raises(Exception) as e:
+            ai.tanya_deepseek([{"role": "user", "content": "x"}], klien=_KlienTiruan(respon))
+        assert e.value.detail["code"] == "AI_UNAVAILABLE"
+
+
+def test_gemini_dipakai_bila_hanya_kunci_gemini(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+    monkeypatch.setenv("GEMINI_API_KEY", "AIza-tes")
+    k = _KlienTiruan(_Respon(200, {"choices": [{"message": {"content": "Apa buktinya?"}}]}))
+    assert ai.tanya_deepseek([{"role": "user", "content": "x"}], klien=k) == "Apa buktinya?"
+    assert k.dikirim["url"] == ai.GEMINI_URL
+    assert k.dikirim["json"]["model"] == ai.GEMINI_MODEL
+    assert k.dikirim["headers"]["Authorization"] == "Bearer AIza-tes"
+
+
+def test_groq_dipakai_bila_hanya_kunci_groq(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    monkeypatch.setenv("GROQ_API_KEY", "gsk_tes")
+    k = _KlienTiruan(_Respon(200, {"choices": [{"message": {"content": "Apa buktinya?"}}]}))
+    assert ai.tanya_deepseek([{"role": "user", "content": "x"}], klien=k) == "Apa buktinya?"
+    assert k.dikirim["url"] == ai.GROQ_URL
+
+
+def test_rapikan_maksimal_3_kalimat_dan_pertanyaan_tetap_ada() -> None:
+    teks = "Bagus. Kamu teliti. Ingat syaratnya. Apa buktinya? Coba lagi."
+    hasil = ai.rapikan(teks)
+    assert hasil == "Bagus. Kamu teliti. Apa buktinya?"
+    assert ai.rapikan("**Tepat**, lihat angka 2. Apa buktinya?") == "Tepat, lihat angka 2. Apa buktinya?"
+
+
+def test_prompt_memuat_langkah_literasi() -> None:
+    assert "Pahami" in ai.PROMPT_SISTEM and "Tafsirkan" in ai.PROMPT_SISTEM

@@ -8,8 +8,10 @@ export const MENU = [
   { ke: '/peta', label: 'Beranda', pendek: 'Beranda', ikon: 'beranda' },
   { ke: '/materi', label: 'Materi Belajar', pendek: 'Materi', ikon: 'materi' },
   { ke: '/latihan', label: 'Latihan Interaktif', pendek: 'Latihan', ikon: 'latihan' },
+  { ke: '/tanya', label: 'Tanya AI', pendek: 'Tanya AI', ikon: 'tanya' },
   { ke: '/tes', label: 'Pretest & Posttest', pendek: 'Tes', ikon: 'tes' },
-  { ke: '/ekspor', label: 'Ekspor Data', pendek: 'Ekspor', ikon: 'ekspor' },
+  // Di HP, Ekspor dibuka dari halaman Tes agar bilah bawah tetap 5 menu.
+  { ke: '/ekspor', label: 'Ekspor Data', pendek: 'Ekspor', ikon: 'ekspor', hp: false },
 ]
 
 
@@ -72,7 +74,7 @@ export default function AppShell({ judul, children }) {
         style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
         aria-label="Menu utama"
       >
-        {MENU.map((m) => (
+        {MENU.filter((m) => m.hp !== false).map((m) => (
           <NavLink
             key={m.ke}
             to={m.ke}

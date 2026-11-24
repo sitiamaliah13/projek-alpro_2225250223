@@ -9,6 +9,7 @@ export function progresKosong() {
     lessons: {}, // { m1: { done, stars, completedAt } }
     attempts: [], // { item_id, correct, hints_used, tries, error_tag, ts }
     explanations: [], // { item_id, reason_choice, reason_correct, text, ts }
+    mediator: [], // { lesson_id, card, ts } — hanya jumlah pemakaian Mediator RMT, tanpa isi percakapan
     loads: [], // { lesson_id, rating, ts }
   }
 }
