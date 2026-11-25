@@ -19,6 +19,7 @@ import KartuRumus from '../components/kartu/KartuRumus.jsx'
 import KartuMesin from '../components/kartu/KartuMesin.jsx'
 import KartuSorot from '../components/kartu/KartuSorot.jsx'
 import KartuLiterasi from '../components/kartu/KartuLiterasi.jsx'
+import KartuPanah3D from '../components/kartu/KartuPanah3D.jsx'
 import PenandaRmt from '../components/PenandaRmt.jsx'
 import MediatorRmt from '../components/MediatorRmt.jsx'
 import { ambilPelajaran } from '../data/konten.js'
@@ -42,6 +43,7 @@ const KARTU = {
   mesin: KartuMesin, // Mesin Fungsi 3D (F17)
   sorot: KartuSorot, // M2 sorot range (IL02)
   literasi: KartuLiterasi, // M7 soal 4 langkah (F13)
+  panah3d: KartuPanah3D, // diagram panah 3D (F24)
 }
 const TANPA_INTERAKSI = new Set(['teks', 'ringkasan'])
 /** Latihan yang dihitung untuk bintang dan dicatat sebagai attempts. */

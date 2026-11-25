@@ -3,6 +3,7 @@ import AppShell from '../components/AppShell.jsx'
 import Ikon from '../components/Ikon.jsx'
 import { posttestTerbuka } from '../data/progres.js'
 import { useProgres } from '../data/ProgresContext.jsx'
+import PerbandinganTes from '../components/PerbandinganTes.jsx'
 
 function KartuTes({ judul, ket, status, ke, aksi }) {
   return (
@@ -48,6 +49,7 @@ export default function Tes() {
         />
         <KartuTes judul="Posttest" ket="Dikerjakan setelah semua modul selesai." status={post} ke="/posttest" aksi="Kerjakan Posttest" />
       </div>
+      <PerbandinganTes token={siswa?.token} />
       <Link to="/ekspor" className="mt-6 inline-flex min-h-tap items-center font-semibold text-domain underline lg:hidden">
         Ekspor data untuk guru →
       </Link>

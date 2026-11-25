@@ -100,7 +100,7 @@ def test_login_kode_benar_tidak_peka_huruf(client: TestClient) -> None:
     assert r.status_code == 200
     body = r.json()
     assert body["token_type"] == "bearer" and body["access_token"]
-    assert body["student"] == {"id": ID_AKTIF, "class": "8A", "pretest_done": False, "posttest_done": False, "diagnostic_done": False}
+    assert body["student"] == {"id": ID_AKTIF, "class": "8A", "pretest_done": False, "posttest_done": False, "diagnostic_done": False, "scores": {}}
 
 
 def test_login_kode_salah(client: TestClient) -> None:
@@ -342,3 +342,15 @@ def test_rapikan_maksimal_3_kalimat_dan_pertanyaan_tetap_ada() -> None:
 
 def test_prompt_memuat_langkah_literasi() -> None:
     assert "Pahami" in ai.PROMPT_SISTEM and "Tafsirkan" in ai.PROMPT_SISTEM
+
+
+def test_me_menampilkan_nilai_dari_peneliti(client: TestClient, db: DbTiruan) -> None:
+    client.put("/progress", headers=_auth(), json={"data": PROGRES})
+    db.tabel["assessment_results"][0]["score"] = 12
+    db.tabel["assessment_results"][0]["per_process"] = {"reasoning": 4}
+    me = client.get("/me", headers=_auth()).json()
+    assert me["scores"]["pre"] == {"score": 12, "per_process": {"reasoning": 4}}
+
+
+def test_riwayat_menerima_balasan_mediator_terpanjang() -> None:
+    ai.MediatorBody(pesan="lanjut", riwayat=[{"peran": "mediator", "teks": "a" * 800}])

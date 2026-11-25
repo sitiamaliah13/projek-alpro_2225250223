@@ -24,6 +24,7 @@
       "isi": ["**Range** hanya anggota B yang **terkena panah**.", "Di sini range = {a, b}, diberi latar hijau muda. c dan d tidak termasuk."],
       "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c", "d"], "pairs": [[1, "a"], [2, "b"], [3, "b"]], "sorotB": ["a", "b"] }
     },
+    {"type": "panah3d", "tahap": "Simulasi", "judul": "Jelajah 3D: domain, kodomain, range", "isi": ["A adalah domain, B adalah kodomain. Range adalah anggota B yang terkena panah, ditandai ★.", "Putar diagram, lalu bandingkan range dengan kodomain."], "sorotRange": true, "contoh": [{"label": "Contoh 1", "A": [1, 2, 3, 4], "B": ["p", "q", "r", "s"], "pairs": [[1, "p"], [2, "r"], [3, "r"], [4, "p"]]}, {"label": "Contoh 2", "A": [2, 3, 5], "B": [4, 6, 9, 10, 15], "pairs": [[2, 4], [3, 6], [5, 10]]}]},
     {
       "type": "contoh", "tahap": "Contoh lengkap", "judul": "Menentukan ketiganya",
       "isi": ["A = {1, 2, 3, 4}, B = {2, 4, 6, 8, 10}. Relasi: \"setengah dari\"."],

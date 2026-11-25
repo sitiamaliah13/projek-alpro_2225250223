@@ -115,6 +115,9 @@ Aturan 3D: latar polos, ≤ 3 warna semantik, kamera tetap (putar opsional), tan
 - Balasan AI dipotong server menjadi ≤ 3 kalimat (A1). Di soal literasi, AI menuntun 4 langkah satu per satu (A7).
 - Isi layar dikirim ke AI **tanpa** kunci jawaban, umpan balik, dan petunjuk (`frontend/src/lib/rmt.js`). Nama/kode siswa tidak dikirim.
 
+### 4.8 Diagram Panah 3D (F24)
+Gelembung domain (biru) dan kodomain (teal), anggota berupa bola berlabel HTML, panah tabung + kerucut. Anggota A bermasalah = kuning; panah yang ditelusuri = pink; range ditandai ★ (bukan hanya warna). OrbitControls (putar/cubit, tanpa geser), `frameloop="demand"`, dpr ≤ 1,5, lazy-load; animasi bola hanya setelah tombol ditekan (A4, A5). Label 3D dibatasi z-index agar tidak menutupi bilah tombol bawah.
+
 ## 5. Gaya Visual
 - Mobile-first, acuan lebar 360 px, satu kolom, tombol utama di zona jempol.
 - Huruf Nunito/Inter; isi 16–18 px, judul 22 px, *line-height* 1,5.

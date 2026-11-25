@@ -29,7 +29,7 @@ describe('ringkasanEvaluasi', () => {
     expect(r.rata_beban_kognitif).toBe(5.5)
     expect(r.persen_benar_latihan).toBe(67)
     expect(r.pretest_selesai).toBe(true)
-    expect(r.per_modul.m1).toEqual({ latihan: 2, benar_percobaan_pertama: 1, petunjuk_dipakai: 2, rata_beban_kognitif: 4, tanya_ai: 2 })
+    expect(r.per_modul.m1).toEqual({ latihan: 2, benar_percobaan_pertama: 1, petunjuk_dipakai: 2, rata_beban_kognitif: 4, tanya_ai: 2, skor_proses_literasi: null })
     expect(r.per_modul.tanya.tanya_ai).toBe(1)
   })
 

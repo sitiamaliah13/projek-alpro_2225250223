@@ -3,6 +3,8 @@ import { baca, hapus, tulis } from './storage.js'
 import { progresKosong } from './progres.js'
 import { buatIdSamaran } from './kodeSiswa.js'
 import { buatPenyinkron } from './sinkron.js'
+import { pulihkanSesi } from './pulihkanSesi.js'
+import { ambilStatus, apiAktif } from './api.js'
 
 const ProgresCtx = createContext(null)
 
@@ -50,6 +52,26 @@ export function ProgresProvider({ children }) {
 
   useEffect(() => {
     setStatusSinkron(siswa?.token ? (penyinkron.current.adaTertunda() ? 'tertunda' : 'tersimpan') : 'lokal')
+  }, [siswa])
+
+  // Saat dibuka: bila server menolak token lama, pulihkan sesi dan kirim progres yang ada di HP.
+  useEffect(() => {
+    if (!siswa?.token || !apiAktif()) return undefined
+    let batal = false
+    ambilStatus(siswa.token).catch(async (e) => {
+      if (e?.status !== 401) return
+      const baru = await pulihkanSesi(siswa)
+      if (!baru || batal) return
+      const milikku = muatProgres(siswa.kode) // progres terbaru di HP; salinan lama tidak dihapus
+      tulis(`progres:${baru.kode}`, milikku)
+      tulis('sesi', baru)
+      setProgres(milikku)
+      setSiswa(baru)
+      penyinkron.current.jadwalkan(baru.token, milikku)
+    })
+    return () => {
+      batal = true
+    }
   }, [siswa])
 
   /** masuk(dataSiswa, progresServer?): progres dari server dipakai bila ada (pindah perangkat). */

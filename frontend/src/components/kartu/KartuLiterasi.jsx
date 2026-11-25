@@ -11,9 +11,11 @@ import { bacaAngka, formatBilangan, formatRumus, periksaRumus } from '../../lib/
  * ① Pahami (tandai info penting, ada satu pengecoh) → ② Rumuskan → ③ Hitung → ④ Tafsirkan.
  * Langkah berikutnya terbuka setelah langkah sebelumnya selesai. "Kerjakan langsung" melewati ①.
  */
-const LANGKAH = ['Pahami', 'Rumuskan', 'Hitung', 'Tafsirkan']
+const LANGKAH = LANGKAH_LITERASI
 const ribuan = (teks) => teks.replace(/\d+/g, (d) => d.replace(/\B(?=(\d{3})+(?!\d))/g, '.'))
 const rp = (n) => `Rp${ribuan(formatBilangan(n))}`
+
+import { LANGKAH_LITERASI, skorProses } from '../../lib/literasi.js'
 
 export default function KartuLiterasi({ kartu, onSelesai }) {
   const { a, b } = kartu.rumus
@@ -25,22 +27,30 @@ export default function KartuLiterasi({ kartu, onSelesai }) {
   const [pilih, setPilih] = useState(null)
   const [umpan, setUmpan] = useState(null)
   const [hint, setHint] = useState(0)
-  const [catatan, setCatatan] = useState({ salah: 0, hints: 0, tag: null, langsung: false })
+  const [catatan, setCatatan] = useState({ salah: 0, hints: 0, tag: null, langsung: false, langkah: [] })
 
   const salah = (pesan, tag = null) => {
     setUmpan({ jenis: 'salah', teks: pesan })
-    setCatatan((c) => ({ ...c, salah: c.salah + 1, tag: c.tag ?? tag }))
+    setCatatan((c) => {
+      const langkah = [...c.langkah]
+      langkah[ke] = { salah: (langkah[ke]?.salah ?? 0) + 1, hint: langkah[ke]?.hint ?? 0 }
+      return { ...c, salah: c.salah + 1, tag: c.tag ?? tag, langkah }
+    })
   }
 
   const maju = (catatanBaru = catatan) => {
     setUmpan(null)
-    setCatatan((c) => ({ ...c, hints: c.hints + hint }))
+    const langkah = [...catatanBaru.langkah]
+    langkah[ke] = { salah: langkah[ke]?.salah ?? 0, hint }
+    setCatatan((c) => ({ ...c, hints: c.hints + hint, langkah }))
     setHint(0)
     const n = ke + 1
     setKe(n)
     if (n === 4) {
       const c = catatanBaru
-      onSelesai?.({ correct: c.salah === 0, tries: c.salah + 1, hints_used: c.hints + hint, error_tag: c.tag, skip_pahami: c.langsung })
+      // Penilaian proses berpikir per langkah, bukan hanya jawaban akhir.
+      const proses = skorProses(langkah, c.langsung)
+      onSelesai?.({ correct: c.salah === 0, tries: c.salah + 1, hints_used: c.hints + hint, error_tag: c.tag, skip_pahami: c.langsung, proses })
     }
   }
 
@@ -205,9 +215,30 @@ export default function KartuLiterasi({ kartu, onSelesai }) {
       )}
       {umpan && <UmpanBalik jenis={umpan.jenis}>{umpan.teks}</UmpanBalik>}
       {ke === 4 && <UmpanBalik jenis="benar">{kartu.tafsir.benar}</UmpanBalik>}
+      {ke === 4 && <RingkasanProses langkah={catatan.langkah} lewatiPahami={catatan.langsung} />}
       {ke < 4 && (
         <PanelHint petunjuk={kartu.petunjuk[LANGKAH[ke].toLowerCase()] ?? []} terbuka={hint} onBuka={() => setHint(hint + 1)} />
       )}
+    </div>
+  )
+}
+
+/** Skor proses berpikir ditampilkan ke siswa: per langkah, dengan teks (bukan hanya warna). */
+function RingkasanProses({ langkah, lewatiPahami }) {
+  const { rinci, skor, maks } = skorProses(langkah, lewatiPahami)
+  const arti = { 2: 'mandiri', 1: 'dengan bantuan', null: 'dilewati' }
+  return (
+    <div className="mt-3 rounded-xl border-2 border-slate-200 bg-white p-3">
+      <p className="font-bold">
+        Skor proses berpikirmu: {skor} dari {maks}
+      </p>
+      <ul className="mt-1 grid grid-cols-2 gap-1 text-base">
+        {LANGKAH_LITERASI.map((n, i) => (
+          <li key={n}>
+            {n}: {rinci[i] === null ? '–' : `${rinci[i]}/2`} ({arti[rinci[i]]})
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
