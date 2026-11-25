@@ -69,7 +69,7 @@ Tulis teks polos tanpa Markdown, tanpa LaTeX."""
 
 class Giliran(BaseModel):
     peran: Literal["siswa", "mediator"]
-    teks: str = Field(min_length=1, max_length=600)
+    teks: str = Field(min_length=1, max_length=800)  # sama dengan batas balasan mediator
 
 
 class MediatorBody(BaseModel):

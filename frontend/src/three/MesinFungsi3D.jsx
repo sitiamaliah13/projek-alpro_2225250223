@@ -16,7 +16,7 @@ const ABU = '#475569'
 
 function Label({ children, posisi }) {
   return (
-    <Html position={posisi} center style={{ pointerEvents: 'none' }}>
+    <Html position={posisi} center zIndexRange={[5, 0]} style={{ pointerEvents: 'none' }}>
       <div className="whitespace-nowrap rounded-lg bg-white px-2 py-1 text-lg font-bold shadow">{children}</div>
     </Html>
   )
@@ -59,7 +59,7 @@ export default function MesinFungsi3D({ aturan, x, fx, tahap, kualitas = 'standa
   const warnaX = x < 0 ? UNGU : BIRU
   const warnaF = fx < 0 ? UNGU : TEAL
   return (
-    <div className="h-64 w-full overflow-hidden rounded-2xl bg-white" role="img" aria-label={`Mesin fungsi 3D dengan aturan ${aturan}`}>
+    <div className="relative isolate h-64 w-full overflow-hidden rounded-2xl bg-white" role="img" aria-label={`Mesin fungsi 3D dengan aturan ${aturan}`}>
       <Canvas
         frameloop="demand"
         dpr={kualitas === 'standar' ? [1, 1.5] : 1}

@@ -58,6 +58,11 @@ export async function daftarOtomatis(opsi = {}) {
   return { token: isi.access_token, kode: isi.code, student: isi.student }
 }
 
+/** GET /me → status siswa, termasuk nilai pretest/posttest bila sudah dinilai peneliti. */
+export function ambilStatus(token, opsi = {}) {
+  return panggil('/me', { token, ...opsi })
+}
+
 /** GET /progress → data progres tersimpan atau null */
 export async function ambilProgresServer(token, opsi = {}) {
   const isi = await panggil('/progress', { token, ...opsi })

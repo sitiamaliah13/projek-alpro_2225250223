@@ -148,6 +148,10 @@ Kurikulum Merdeka **Fase D**, elemen **Aljabar**, topik **Relasi dan Fungsi** (k
 | F21 | **Mediator RMT (AI DeepSeek)** | Tombol "Tanya Mediator", hanya bila diminta. Maksimal 50 pertanyaan per layar; juga ada menu **Tanya AI** untuk tanya materi bebas. Balasan ≤ 3 kalimat berupa pertanyaan pemandu dan permintaan bukti logis, **tanpa kunci jawaban**. Butuh internet + kode siswa server | RMT-3, GL03 | Bantuan sesuai kebutuhan |
 | F22 | Mediator literasi 4 langkah | Di soal cerita (M7), Tanya AI menanyakan siswa sedang di langkah mana (Pahami → Rumuskan → Hitung → Tafsirkan), lalu hanya membantu langkah itu | EL05, RMT-3, literasi | Segmenting |
 | F23 | Ringkasan evaluasi di Ekspor | Ekspor JSON memuat `ringkasan`: % benar latihan, rata-rata beban kognitif, petunjuk dipakai, dan jumlah Tanya AI per modul (tanpa isi percakapan) | — | Bukti evaluasi tahap 2 |
+| F24 | **Diagram Panah 3D** (Three.js) | M1: contoh fungsi, bukan fungsi (dua pasangan), bukan fungsi (tanpa pasangan); M2: domain–kodomain–range (★). Bisa diputar, tombol "Telusuri panah" menjalankan bola kecil sepanjang panah **hanya saat diketuk**. Sakelar Matikan 3D → diagram 2D yang sama | IL01, IL02, GL01, RMT-1 | Visual bermakna, tanpa gerak otomatis |
+| F25 | Skor proses literasi | Soal 4 langkah dinilai per langkah (2 = mandiri, 1 = dibantu/salah dulu, – = dilewati) dan ditampilkan ke siswa; tersimpan di `attempts[].proses` | EL05, literasi | Penilaian proses, bukan hanya jawaban |
+| F26 | Perkembangan Belajarku | Beranda: tiap modul berstatus Dikuasai / Perlu diulang / Belum dipelajari (bintang ≥ 2 dan ≥ 70% latihan benar sekali coba) | — | Self-monitoring |
+| F27 | Perbandingan pretest–posttest | Halaman Tes menampilkan nilai yang diisi peneliti (`assessment_results.score`, `per_process`) dan N-Gain. Kunci & pembahasan tes formal tidak ada di aplikasi (aturan 6) | — | Evaluasi |
 | F19 | PWA + offline | Dapat dipasang di layar utama Android; konten tercache | — | Hemat kuota |
 
 ### 6.2 Setelah MVP

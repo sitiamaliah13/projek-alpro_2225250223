@@ -26,6 +26,13 @@ export function ringkasanEvaluasi(progres = {}) {
       petunjuk_dipakai: a.reduce((n, x) => n + (x.hints_used ?? 0), 0),
       rata_beban_kognitif: rata(loads.filter((l) => l.lesson_id === m).map((l) => l.rating)),
       tanya_ai: mediator.filter((x) => x.lesson_id === m).length,
+      skor_proses_literasi: (() => {
+        const p = a.filter((x) => x.proses)
+        if (!p.length) return null
+        const skor = p.reduce((n, x) => n + x.proses.skor, 0)
+        const maks = p.reduce((n, x) => n + x.proses.maks, 0)
+        return { skor, maks }
+      })(),
     }
   }
   return {

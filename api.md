@@ -55,6 +55,8 @@
 Rate limit 5/menit/IP. Kode tidak peka huruf besar/kecil.
 
 ### `GET /me`
+→ status siswa + `scores: { pre?: { score, per_process }, post?: {...} }` (diisi peneliti; `null` bila belum dinilai).
+
 Profil singkat + status asesmen.
 
 ## 2. Diagnostik (Cek Bekal)

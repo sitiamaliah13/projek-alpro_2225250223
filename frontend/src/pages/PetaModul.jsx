@@ -6,6 +6,7 @@ import StudyTime from '../components/StudyTime.jsx'
 import HeroBanner from '../components/dashboard/HeroBanner.jsx'
 import GridModul from '../components/dashboard/GridModul.jsx'
 import KartuEvaluasi from '../components/dashboard/KartuEvaluasi.jsx'
+import Perkembangan from '../components/dashboard/Perkembangan.jsx'
 import { modulBeranda, tautanModul } from '../data/konten.js'
 import { statusModul } from '../data/progres.js'
 import { useProgres } from '../data/ProgresContext.jsx'
@@ -61,6 +62,8 @@ export default function PetaModul() {
           </div>
           <GridModul progres={progres} />
         </section>
+
+        <Perkembangan progres={progres} />
 
         <KartuEvaluasi progres={progres} siswa={siswa} />
       </div>

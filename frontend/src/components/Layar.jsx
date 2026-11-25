@@ -30,7 +30,7 @@ export default function Layar({ judul, kembali, kanan, bawah, children }) {
       <main className="flex-1 px-4 py-5">{children}</main>
       {bawah && (
         <footer
-          className="sticky bottom-0 border-t border-slate-200 bg-white px-4 pt-3"
+          className="sticky bottom-0 z-30 border-t border-slate-200 bg-white px-4 pt-3"
           style={{ paddingBottom: "max(12px, env(safe-area-inset-bottom, 0px))" }}
         >
           {bawah}

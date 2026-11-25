@@ -69,7 +69,7 @@ def _siswa(db: Db, student_id: str) -> dict[str, Any]:
 
 
 def _status(db: Db, s: dict[str, Any]) -> dict[str, Any]:
-    tes = db.select("assessment_results", {"student_id": f"eq.{s['id']}", "select": "kind"})
+    tes = db.select("assessment_results", {"student_id": f"eq.{s['id']}", "select": "kind,score,per_process"})
     diag = db.select("diagnostic_results", {"student_id": f"eq.{s['id']}", "select": "student_id"})
     kinds = {t["kind"] for t in tes}
     return {
@@ -78,6 +78,8 @@ def _status(db: Db, s: dict[str, Any]) -> dict[str, Any]:
         "pretest_done": "pre" in kinds,
         "posttest_done": "post" in kinds,
         "diagnostic_done": bool(diag),
+        # Nilai diisi peneliti setelah menilai dengan rubrik; null bila belum dinilai.
+        "scores": {t["kind"]: {"score": t.get("score"), "per_process": t.get("per_process")} for t in tes},
     }
 
 
