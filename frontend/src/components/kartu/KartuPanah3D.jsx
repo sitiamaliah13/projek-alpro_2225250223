@@ -77,17 +77,6 @@ export default function KartuPanah3D({ kartu, onSelesai }) {
         ))}
       </div>
 
-      <div className="mb-2 flex justify-end">
-        <button
-          type="button"
-          onClick={() => setAktif(!aktif)}
-          aria-pressed={!aktif}
-          className="min-h-tap rounded-xl border-2 border-slate-300 bg-white px-3 font-semibold"
-        >
-          {aktif ? '🧊 Matikan 3D' : '🧊 Nyalakan 3D'}
-        </button>
-      </div>
-
       {aktif ? (
         <>
           <BatasGalat cadangan={duaD}>
@@ -110,9 +99,19 @@ export default function KartuPanah3D({ kartu, onSelesai }) {
         duaD
       )}
 
-      <Tombol jenis="kedua" className="mt-3" onClick={telusuri}>
-        {telusur === null ? '▶ Telusuri panah' : '▶ Panah berikutnya'}
-      </Tombol>
+      <div className="mt-2 flex gap-2">
+        <Tombol jenis="kedua" onClick={telusuri}>
+          {telusur === null ? '▶ Telusuri panah' : '▶ Panah berikutnya'}
+        </Tombol>
+        <button
+          type="button"
+          onClick={() => setAktif(!aktif)}
+          aria-pressed={!aktif}
+          className="min-h-tap shrink-0 rounded-xl border-2 border-slate-300 bg-white px-3 font-semibold"
+        >
+          {aktif ? 'Matikan 3D' : 'Nyalakan 3D'}
+        </button>
+      </div>
       {telusur !== null && (
         <p className="mt-2 font-semibold" role="status">
           Panah {telusur + 1} dari {contoh.pairs.length}: {String(contoh.pairs[telusur][0])} → {String(contoh.pairs[telusur][1])}

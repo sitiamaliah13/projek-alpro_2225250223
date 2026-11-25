@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import AppShell from '../components/AppShell.jsx'
 import Ikon from '../components/Ikon.jsx'
 import UmpanBalik from '../components/UmpanBalik.jsx'
+import UkuranHuruf from '../components/UkuranHuruf.jsx'
 import StudyTime from '../components/StudyTime.jsx'
 import HeroBanner from '../components/dashboard/HeroBanner.jsx'
 import GridModul from '../components/dashboard/GridModul.jsx'
@@ -22,6 +23,7 @@ export default function PetaModul() {
     <AppShell judul={`Halo, ${siswa.nama ?? 'Teman'}!`}>
       <div className="space-y-6">
         <StudyTime />
+        <UkuranHuruf />
 
         <HeroBanner
           ke={berikut ? tautanModul(berikut) : '/tes'}

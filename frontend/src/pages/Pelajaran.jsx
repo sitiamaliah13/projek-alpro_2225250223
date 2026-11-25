@@ -24,6 +24,7 @@ import PenandaRmt from '../components/PenandaRmt.jsx'
 import MediatorRmt from '../components/MediatorRmt.jsx'
 import { ambilPelajaran } from '../data/konten.js'
 import { rmtUntuk } from '../lib/rmt.js'
+import { hitungBintang, termasukLatihan } from '../lib/bintang.js'
 import { useProgres } from '../data/ProgresContext.jsx'
 
 const KARTU = {
@@ -46,23 +47,6 @@ const KARTU = {
   panah3d: KartuPanah3D, // diagram panah 3D (F24)
 }
 const TANPA_INTERAKSI = new Set(['teks', 'ringkasan'])
-/** Latihan yang dihitung untuk bintang dan dicatat sebagai attempts. */
-const termasukLatihan = (k) =>
-  ((k.type === 'soal' || k.type === 'buat') && k.latihan !== false) || k.latihan === true
-
-/** Bintang 1–3: latihan benar pada percobaan pertama tanpa petunjuk (design.md §7). */
-function hitungBintang(kartu, hasil) {
-  const latihan = kartu.filter(termasukLatihan)
-  if (latihan.length === 0) return 3
-  const mulus = latihan.filter((k) => {
-    const h = hasil[k.id]
-    return h?.correct && h.tries === 1 && h.hints_used === 0
-  }).length
-  if (mulus === latihan.length) return 3
-  if (mulus >= latihan.length / 2) return 2
-  return 1
-}
-
 /**
  * Pelajaran berpola 8 langkah tetap (design.md §3). Siswa mengatur tempo sendiri:
  * tidak ada perpindahan otomatis (A5). Tombol Lanjut aktif setelah aktivitas layar selesai.
@@ -70,7 +54,7 @@ function hitungBintang(kartu, hasil) {
 export default function Pelajaran() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { ubah, siswa } = useProgres()
+  const { ubah, siswa, progres } = useProgres()
   const pelajaran = ambilPelajaran(id)
   const [cari] = useSearchParams()
   // ?mulai=n dari menu Latihan Interaktif: langsung ke layar latihan pertama
@@ -128,7 +112,7 @@ export default function Pelajaran() {
   }
 
   const tamat = () => {
-    const stars = hitungBintang(pelajaran.cards, hasil)
+    const stars = hitungBintang(pelajaran.cards, hasil, progres.attempts)
     ubah((p) => {
       const lama = p.lessons[pelajaran.id]
       p.lessons[pelajaran.id] = {

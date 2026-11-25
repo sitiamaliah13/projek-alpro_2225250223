@@ -50,7 +50,7 @@ function Anggota({ posisi, warna, label, tebal }) {
         <sphereGeometry args={[tebal ? 0.3 : 0.24, 20, 14]} />
         <meshStandardMaterial color={warna} roughness={0.45} />
       </mesh>
-      <Label posisi={[0, 0.48, 0]}>{label}</Label>
+      <Label posisi={[posisi.x < 0 ? -0.6 : 0.65, 0, 0]}>{label}</Label>
     </group>
   )
 }
@@ -92,7 +92,7 @@ function BolaJalan({ dari, ke }) {
   useFrame((state, delta) => {
     if (!ref.current) return
     if (waktu.current < 1) {
-      waktu.current = Math.min(1, waktu.current + delta / 0.9)
+      waktu.current = Math.min(1, waktu.current + Math.min(delta, 0.05) / 0.9)
       state.invalidate()
     }
     ref.current.position.lerpVectors(dari, ke, waktu.current)
@@ -118,7 +118,7 @@ export default function DiagramPanah3D({ A, B, pairs, sorotRange = false, masala
   const aktif = telusur !== null && pairs[telusur] ? pairs[telusur] : null
 
   return (
-    <div className="relative isolate h-72 w-full touch-none overflow-hidden rounded-2xl bg-white" role="img" aria-label="Diagram panah 3D. Geser untuk memutar.">
+    <div className="relative isolate h-56 w-full touch-none overflow-hidden rounded-2xl bg-white" role="img" aria-label="Diagram panah 3D. Geser untuk memutar.">
       <Canvas
         frameloop="demand"
         dpr={kualitas === 'standar' ? [1, 1.5] : 1}
