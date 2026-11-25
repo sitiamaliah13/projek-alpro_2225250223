@@ -35,7 +35,7 @@
       "isi": ["Dua anggota A **boleh** menuju anggota B yang sama.", "Anggota B **boleh** tidak punya pasangan. Ini tetap fungsi."],
       "diagram": { "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "a"], [3, "b"]], "tandai": true }
     },
-    {"type": "panah3d", "tahap": "Simulasi", "judul": "Jelajah 3D: fungsi atau bukan?", "isi": ["Bandingkan tiga diagram ini. Putar dan telusuri panahnya satu per satu.", "Anggota A yang bermasalah ditandai kuning."], "contoh": [{"label": "Fungsi", "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "a"], [3, "b"]]}, {"label": "Bukan: dua pasangan", "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "b"], [2, "c"], [3, "c"]]}, {"label": "Bukan: tanpa pasangan", "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "b"]]}]},
+    {"type": "panah3d", "tahap": "Simulasi", "judul": "Jelajah 3D: fungsi atau bukan?", "isi": ["Bandingkan tiga diagram ini. Anggota A yang bermasalah ditandai kuning."], "contoh": [{"label": "Fungsi", "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "a"], [3, "b"]]}, {"label": "Dua panah", "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "b"], [2, "c"], [3, "c"]]}, {"label": "Tanpa panah", "A": [1, 2, 3], "B": ["a", "b", "c"], "pairs": [[1, "a"], [2, "b"]]}]},
     {
       "type": "simulasi", "tahap": "Simulasi", "judul": "Tarik garis",
       "isi": ["Ketuk anggota A, lalu ketuk anggota B untuk membuat panah.", "Ketuk panah lagi untuk menghapusnya. Buatlah sebuah fungsi."],
@@ -48,7 +48,7 @@
       "pilihan": ["1 → a", "2 → b atau 2 → c", "3 → d"],
       "kunci": 1,
       "latihan": false,
-      "petunjuk": ["Periksa anggota A satu per satu.", "Anggota A mana yang punya dua panah?", "Angka 2 punya dua panah. Salah satunya harus dihapus."],
+      "petunjuk": ["Periksa anggota A satu per satu.", "Anggota A mana yang punya dua panah?", "Dari dua panah anggota itu, satu saja yang boleh tersisa."],
       "umpan": { "benar": "Tepat. Panah 2 → b dan 2 → c membuat 2 punya dua pasangan.", "salah": "Panah itu tidak bermasalah. Anggota A-nya hanya punya satu pasangan." }
     },
     {
@@ -79,7 +79,7 @@
       "pilihan": ["Fungsi", "Bukan fungsi"],
       "kunci": 0,
       "petunjuk": ["Periksa anggota A satu per satu.", "Berapa pasangan yang dimiliki 1? 2? 3?", "Dua anggota A boleh menuju anggota B yang sama."],
-      "umpan": { "benar": "Tepat! Setiap anggota A punya tepat satu pasangan. 1 dan 2 sama-sama ke a, dan itu boleh.", "salah": "Hati-hati! 1 dan 2 sama-sama ke a. Itu **boleh**. Yang dilarang adalah satu anggota A punya dua pasangan." }
+      "umpan": { "benar": "Tepat! Setiap anggota A punya tepat satu pasangan. 1 dan 2 sama-sama ke a, dan itu boleh.", "salah": "Hitung panah yang **keluar** dari setiap anggota A. Apakah syarat fungsi melarang dua panah bertemu di B?" }
     },
     {
       "type": "soal", "id": "m1-l2", "tahap": "Latihan", "judul": "Latihan 2",
@@ -87,8 +87,8 @@
       "diagram": { "A": [1, 2, 3, 4], "B": ["p", "q", "r"], "pairs": [[1, "p"], [2, "q"], [4, "r"]] },
       "pilihan": ["Fungsi", "Bukan fungsi"],
       "kunci": 1,
-      "petunjuk": ["Apakah semua anggota A sudah punya panah?", "Lihat angka 3.", "Syarat fungsi: **setiap** anggota A harus punya pasangan."],
-      "umpan": { "benar": "Tepat! 3 tidak punya pasangan, jadi relasi ini bukan fungsi.", "salah": "Coba cari angka 3. Belum ada panah dari 3, jadi syarat \"setiap anggota A\" tidak terpenuhi." }
+      "petunjuk": ["Apakah semua anggota A sudah punya panah?", "Hitung panah yang keluar dari setiap anggota A.", "Syarat fungsi: **setiap** anggota A harus punya pasangan."],
+      "umpan": { "benar": "Tepat! 3 tidak punya pasangan, jadi relasi ini bukan fungsi.", "salah": "Periksa lagi satu per satu. Apakah **setiap** anggota A punya panah?" }
     },
     {
       "type": "buat", "id": "m1-l3", "tahap": "Latihan", "judul": "Buat Diagramku",
@@ -104,7 +104,7 @@
       "pilihan": ["Setiap siswa → golongan darahnya", "Setiap siswa → hobinya"],
       "kunci": 0,
       "petunjuk": ["Bayangkan satu siswa. Berapa golongan darah yang ia punya?", "Apakah seseorang bisa punya dua hobi?", "Fungsi: setiap anggota punya **tepat satu** pasangan."],
-      "umpan": { "benar": "Tepat! Setiap orang punya tepat satu golongan darah. Hobi bisa lebih dari satu.", "salah": "Seorang siswa bisa punya dua hobi atau lebih. Jadi relasi hobi belum tentu fungsi." }
+      "umpan": { "benar": "Tepat! Setiap orang punya tepat satu golongan darah. Hobi bisa lebih dari satu.", "salah": "Bayangkan satu siswa. Mungkinkah ia punya lebih dari satu pasangan?" }
     },
     {
       "type": "jelaskan", "id": "m1-jelaskan", "tahap": "Jelaskan", "judul": "Jelaskan ke temanmu",

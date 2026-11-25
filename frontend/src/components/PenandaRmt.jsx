@@ -8,10 +8,10 @@ export default function PenandaRmt({ rmt }) {
   return (
     <details className="mb-2 text-base text-muted">
       <summary className="min-h-tap cursor-pointer py-2">
-        {rmt.fase.nama} · Fungsi kognitif: <span className="font-semibold text-ink">{rmt.fungsi.nama}</span>
+        {rmt.fase.kode === 'R' ? 'Refleksi' : `Fase ${rmt.fase.kode}`} · <span className="font-semibold text-ink">{rmt.fungsi.nama}</span>
       </summary>
       <p className="rounded-xl bg-white px-3 py-2">
-        <span className="font-semibold">{rmt.fungsi.nama}:</span> {rmt.fungsi.arti}
+        {rmt.fase.nama}. <span className="font-semibold">Fungsi kognitif – {rmt.fungsi.nama}:</span> {rmt.fungsi.arti}
       </p>
     </details>
   )

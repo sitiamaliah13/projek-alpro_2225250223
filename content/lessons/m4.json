@@ -77,7 +77,7 @@
       "tanya": { "tipe": "angka", "teks": "Berapa f(4)?", "kunci": 11,
         "benar": "Tepat. f(x) selalu naik 3, jadi f(4) = 8 + 3 = 11.",
         "salah": "Cari dulu polanya: f(x) naik berapa setiap x naik 1?",
-        "petunjuk": ["Bandingkan 2 dan 5, lalu 5 dan 8.", "f(x) naik 3 setiap langkah.", "f(4) = f(3) + 3."] }
+        "petunjuk": ["Bandingkan 2 dan 5, lalu 5 dan 8.", "Apakah kenaikannya selalu sama?", "Tambahkan kenaikan itu pada f(3)."] }
     },
     {
       "type": "isian", "id": "m4-l2", "tahap": "Latihan", "judul": "Latihan 2", "latihan": true,

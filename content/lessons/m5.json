@@ -35,19 +35,19 @@
       "type": "substitusi", "id": "m5-s1", "tahap": "Contoh rumpang", "judul": "Giliranmu",
       "a": 2, "b": -3, "x": -1,
       "isi": ["f(x) = 2x − 3. Hitung **f(−1)** langkah demi langkah."],
-      "petunjuk": ["Positif × negatif hasilnya negatif.", "2 × (−1) = −2.", "−2 − 3 berarti dari −2 mundur 3 langkah."]
+      "petunjuk": ["Positif × negatif hasilnya negatif.", "Kalikan angkanya dulu, lalu tentukan tandanya.", "Mengurangi 3 berarti mundur 3 langkah pada garis bilangan."]
     },
     {
       "type": "substitusi", "id": "m5-l1", "tahap": "Latihan", "judul": "Latihan 1", "latihan": true,
       "a": -3, "b": 4, "x": -5,
       "isi": ["f(x) = −3x + 4. Hitung **f(−5)**."],
-      "petunjuk": ["Negatif × negatif hasilnya positif.", "(−3) × (−5) = 15.", "15 + 4 = ?"]
+      "petunjuk": ["Negatif × negatif hasilnya positif.", "Kalikan angkanya dulu, lalu tentukan tandanya.", "Lalu tambahkan bilangan di belakang x."]
     },
     {
       "type": "substitusi", "id": "m5-l2", "tahap": "Latihan", "judul": "Latihan 2", "latihan": true,
       "a": 4, "b": 6, "x": -3,
       "isi": ["f(x) = 4x + 6. Hitung **f(−3)**."],
-      "petunjuk": ["Positif × negatif hasilnya negatif.", "4 × (−3) = −12.", "−12 + 6 berarti dari −12 maju 6 langkah."]
+      "petunjuk": ["Positif × negatif hasilnya negatif.", "Kalikan angkanya dulu, lalu tentukan tandanya.", "Menambah 6 berarti maju 6 langkah pada garis bilangan."]
     },
     {
       "type": "isian", "id": "m5-l3", "tahap": "Latihan", "judul": "Latihan 3", "latihan": true,
@@ -55,8 +55,8 @@
       "tanya": { "tipe": "angka", "teks": "Berapa nilai x?", "kunci": 5,
         "benar": "Tepat. 2x − 3 = 7, jadi 2x = 10 dan x = 5. Cek: 2 × 5 − 3 = 7.",
         "salah": "Tulis persamaannya: 2x − 3 = 7. Lalu cari x.",
-        "salahKhusus": { "11": "Kamu menghitung f(7). Yang ditanya: x berapa agar f(x) = 7.", "2": "2x − 3 = 7 berarti 2x = 10, bukan 4." },
-        "petunjuk": ["2x − 3 = 7.", "Tambahkan 3 ke kedua ruas: 2x = 10.", "x = 10 : 2."] }
+        "salahKhusus": { "11": "Kamu menghitung f(7). Yang ditanya: x berapa agar f(x) = 7.", "2": "Periksa lagi: ruas kanan harus ditambah atau dikurangi 3?" },
+        "petunjuk": ["2x − 3 = 7.", "Tambahkan 3 ke kedua ruas.", "Lalu bagi kedua ruas dengan 2."] }
     },
     {
       "type": "jelaskan", "id": "m5-jelaskan", "tahap": "Jelaskan", "judul": "Jelaskan ke temanmu",

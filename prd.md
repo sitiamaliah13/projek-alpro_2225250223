@@ -152,6 +152,7 @@ Kurikulum Merdeka **Fase D**, elemen **Aljabar**, topik **Relasi dan Fungsi** (k
 | F25 | Skor proses literasi | Soal 4 langkah dinilai per langkah (2 = mandiri, 1 = dibantu/salah dulu, – = dilewati) dan ditampilkan ke siswa; tersimpan di `attempts[].proses` | EL05, literasi | Penilaian proses, bukan hanya jawaban |
 | F26 | Perkembangan Belajarku | Beranda: tiap modul berstatus Dikuasai / Perlu diulang / Belum dipelajari (bintang ≥ 2 dan ≥ 70% latihan benar sekali coba) | — | Self-monitoring |
 | F27 | Perbandingan pretest–posttest | Halaman Tes menampilkan nilai yang diisi peneliti (`assessment_results.score`, `per_process`) dan N-Gain. Kunci & pembahasan tes formal tidak ada di aplikasi (aturan 6) | — | Evaluasi |
+| F28 | Ukuran huruf | Tiga pilihan di Beranda, tersimpan di HP | EL01 | Keterbacaan |
 | F19 | PWA + offline | Dapat dipasang di layar utama Android; konten tercache | — | Hemat kuota |
 
 ### 6.2 Setelah MVP

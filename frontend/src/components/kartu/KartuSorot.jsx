@@ -42,7 +42,7 @@ export default function KartuSorot({ kartu, onSelesai }) {
       if (!tagPertama) setTagPertama('TERM_SWAP')
       setHasil({ benar: false, pesan: `${lebih.join(' dan ')} tidak terkena panah. Range hanya anggota B yang **terkena panah**.` })
     } else {
-      setHasil({ benar: false, pesan: `Masih ada anggota B yang terkena panah, yaitu ${kurang.join(' dan ')}.` })
+      setHasil({ benar: false, pesan: `Masih ada ${kurang.length} anggota B yang terkena panah. Ikuti lagi setiap panah.` })
     }
   }
 

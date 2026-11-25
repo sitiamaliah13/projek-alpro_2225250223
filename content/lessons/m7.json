@@ -35,8 +35,8 @@
       },
       "petunjuk": {
         "pahami": ["Informasi apa yang dipakai untuk menghitung biaya?", "Waktu perjalanan tidak memengaruhi tarif."],
-        "rumuskan": ["Biaya per km dikalikan x.", "Biaya naik dibayar sekali, jadi ditambahkan.", "f(x) = 2.000x + 5.000"],
-        "hitung": ["Ganti x dengan 6.", "2.000 × 6 = 12.000, lalu tambah 5.000."],
+        "rumuskan": ["Biaya per km dikalikan x.", "Biaya naik dibayar sekali, jadi ditambahkan.", "Gabungkan: biaya per km × x, lalu + biaya naik."],
+        "hitung": ["Ganti x dengan 6.", "Kalikan dulu, baru tambahkan biaya naik."],
         "tafsirkan": ["Bandingkan biaya dengan uang Rani."]
       }
     },
@@ -72,7 +72,7 @@
       "petunjuk": {
         "pahami": ["Jam buka arena tidak memengaruhi biaya."],
         "rumuskan": ["Biaya per jam dikalikan x, biaya awal ditambahkan."],
-        "hitung": ["3.000 × 4 = 12.000, lalu tambah 10.000."],
+        "hitung": ["Kalikan dulu, baru tambahkan biaya awal."],
         "tafsirkan": ["Bandingkan biaya dengan Rp20.000."]
       }
     },

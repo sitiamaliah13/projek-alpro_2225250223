@@ -22,13 +22,13 @@ export default function Latihan() {
     <AppShell judul="Latihan Interaktif">
       <h2 className="text-xl font-bold">Latihan Interaktif</h2>
       <p className="mb-4 mt-1 text-muted">Langsung berlatih. Petunjuk tersedia bila kamu memintanya.</p>
-      <ul className="grid gap-4 sm:grid-cols-2">
+      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {modulTersedia.map((m) => {
           const p = ambilPelajaran(m.lesson)
           const soal = p.cards.filter((k) => k.id && k.tahap === 'Latihan')
           const benar = soal.filter((k) => sudahDikerjakan.has(k.id)).length
           return (
-            <li key={m.id} className="flex items-center gap-4 rounded-3xl border border-slate-200 bg-white p-4">
+            <li key={m.id} className="flex flex-wrap items-center gap-4 rounded-3xl border border-slate-200 bg-white p-4">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-domain">
                 <Ikon nama={m.ikon} className="h-7 w-7" />
               </span>
